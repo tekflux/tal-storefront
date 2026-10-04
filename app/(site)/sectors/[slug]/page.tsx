@@ -119,7 +119,6 @@ export default async function SectorPage({ params }: { params: Promise<Params> }
             {others.map(s => (
               <Link href={`/sectors/${s.slug}`} className="sector-card reveal" key={s.slug} style={{ minHeight: 360 }}>
                 <img src={s.image} alt="" loading="lazy" />
-                <span className="tag">{s.direction}</span>
                 <h3 className="sector-card__title">{s.name}</h3>
                 <p className="sector-card__text">{s.short}</p>
               </Link>

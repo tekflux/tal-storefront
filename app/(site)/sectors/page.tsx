@@ -38,7 +38,6 @@ export default function SectorsPage() {
                 style={{ ['--delay' as string]: `${(i % 3) * 0.08}s` }}
               >
                 <img src={s.image} alt="" loading="lazy" />
-                <span className="tag">{s.direction}</span>
                 <h2 className="sector-card__title">{s.name}</h2>
                 <p className="sector-card__text">{s.summary}</p>
                 <span className="sector-card__more">

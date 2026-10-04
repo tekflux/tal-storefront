@@ -132,7 +132,6 @@ export default function HomePage() {
                 style={{ ['--delay' as string]: `${(i % 3) * 0.08}s` }}
               >
                 <img src={s.image} alt="" loading="lazy" />
-                <span className="tag">{s.direction}</span>
                 <h3 className="sector-card__title">{s.name}</h3>
                 <p className="sector-card__text">{s.short}</p>
                 <span className="sector-card__more">
