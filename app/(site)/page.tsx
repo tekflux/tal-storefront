@@ -49,14 +49,16 @@ export default function HomePage() {
 
       {/* ---------- Credentials ---------- */}
       <div className="creds">
-        <ul className="wrap creds__list" aria-label="Credentials">
-          {credentials.map(c => (
-            <li key={c}>
-              <Icon name="check" size={18} strokeWidth={2.2} />
-              {c}
-            </li>
-          ))}
-        </ul>
+        <div className="wrap">
+          <ul className="creds__list" aria-label="Credentials">
+            {credentials.map(c => (
+              <li key={c}>
+                <Icon name="check" size={18} strokeWidth={2.2} />
+                {c}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* ---------- Intro ---------- */}

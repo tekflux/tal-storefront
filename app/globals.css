@@ -1200,30 +1200,6 @@ a {
   color: var(--muted);
 }
 
-@media (max-width: 1024px) {
-  .steps {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-  .step {
-    padding: 0 0 36px 40px;
-  }
-  .step::before {
-    top: 14px;
-    bottom: 0;
-    left: 6px;
-    right: auto;
-    width: 1px;
-    height: auto;
-  }
-  .step:last-child::before {
-    display: none;
-  }
-  .step::after {
-    top: 4px;
-  }
-}
-
 /* ---------- Commodities ---------- */
 
 .commodity-grid {
@@ -1951,6 +1927,71 @@ a {
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+/* ---------- Swipe rows (phones & tablets) ----------
+   Card grids become horizontal, snap-scrolling rows below 1024px.
+   The row bleeds to the screen edge so the next card peeks in as a swipe hint. */
+
+@media (max-width: 1024px) {
+  .sector-grid,
+  .service-grid,
+  .steps,
+  .commodity-grid,
+  .region-grid {
+    display: grid;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    gap: 14px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 8px var(--gutter) 24px;
+    margin-block: -8px -24px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sector-grid::-webkit-scrollbar,
+  .service-grid::-webkit-scrollbar,
+  .steps::-webkit-scrollbar,
+  .commodity-grid::-webkit-scrollbar,
+  .region-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sector-grid > *,
+  .service-grid > *,
+  .steps > *,
+  .commodity-grid > *,
+  .region-grid > * {
+    scroll-snap-align: start;
+  }
+
+  .sector-grid { grid-auto-columns: min(82%, 340px); }
+  .service-grid { grid-auto-columns: min(86%, 380px); }
+  .steps { grid-auto-columns: min(78%, 300px); gap: 20px; }
+  .commodity-grid { grid-auto-columns: min(46%, 220px); }
+  .region-grid { grid-auto-columns: min(70%, 280px); }
+
+  .sector-card { min-height: 420px; }
+  .sector-card:hover,
+  .commodity:hover { transform: none; }
+
+  /* services become individual bordered cards */
+  .service-grid,
+  .service-grid--light {
+    border: 0;
+  }
+  .service-grid .service {
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius-lg);
+  }
+  .service-grid--light .service {
+    border-color: var(--line);
+  }
 }
 
 /* ---------- Motion ---------- */
