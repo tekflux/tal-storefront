@@ -9,7 +9,6 @@ const nextConfig = {
       { source: '/sectors/agric_commodities/:path*', destination: '/sectors/agricultural-commodities/:path*', permanent: true },
       { source: '/products/:path*', destination: '/sectors', permanent: true },
       { source: '/about/:path+', destination: '/about', permanent: true },
-      { source: '/careers/:path+', destination: '/careers', permanent: true },
       { source: '/insights/:path*', destination: '/', permanent: false },
     ]
   },

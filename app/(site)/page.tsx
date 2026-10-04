@@ -294,7 +294,7 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <div className="media-tall reveal" style={{ ['--delay' as string]: '0.12s' }}>
+          <div className="media-tall media-tall--landscape reveal" style={{ ['--delay' as string]: '0.12s' }}>
             <img src="/img/handshake.jpg" alt="Talcora team agreeing terms with a trade partner" loading="lazy" />
           </div>
         </div>

@@ -153,7 +153,7 @@ export default function ServicesPage() {
               ))}
             </ul>
           </div>
-          <div className="media-tall reveal" style={{ ['--delay' as string]: '0.12s' }}>
+          <div className="media-tall media-tall--landscape reveal" style={{ ['--delay' as string]: '0.12s' }}>
             <img src="/img/quality-lab.jpg" alt="Quality inspector in a laboratory" loading="lazy" />
           </div>
         </div>

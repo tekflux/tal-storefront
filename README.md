@@ -17,6 +17,7 @@ npm run deploy     # build + deploy to Cloudflare
 | What | Where |
 | --- | --- |
 | Company details, offices, sectors, services, markets, stats | `lib/site.ts` |
+| Job adverts on /careers | `lib/jobs.ts` |
 | Commodity process content (e.g. cocoa) | `lib/agrocomm.ts` |
 | Design system (colours, type, components) | `app/globals.css` |
 | Header, footer, logo, shared sections | `components/site/` |
@@ -25,9 +26,16 @@ npm run deploy     # build + deploy to Cloudflare
 
 Most content changes only need an edit to `lib/site.ts`.
 
+### Posting a job
+
+Open `lib/jobs.ts`, copy an existing entry, give it a unique `slug`, fill in the details and set
+`published: true`. Push to `main` and the role appears on /careers (with its own page and application
+form) once Cloudflare redeploys. Set `published: false` to close a role.
+
 ## Environment variables
 
 | Variable | Used by |
 | --- | --- |
-| `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` | Contact form (`/api/contact`) |
+| `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` | Contact form (`/api/contact`) and job applications |
+| `CAREERS_TO_EMAIL` (optional) | Where job applications go; defaults to `CONTACT_TO_EMAIL` |
 | `ANTHROPIC_API_KEY`, `NEXT_PUBLIC_PORTAL_PASSWORD` | Internal buyer finder (`/buyer-finder-ai-agent`) |

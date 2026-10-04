@@ -1397,6 +1397,11 @@ a {
   aspect-ratio: 4 / 5;
 }
 
+.media-tall--landscape {
+  aspect-ratio: 3 / 2;
+  align-self: center;
+}
+
 .media-tall img {
   width: 100%;
   height: 100%;
@@ -1889,6 +1894,135 @@ a {
 .tabs button[aria-pressed='true'] {
   background: var(--ink);
   color: var(--white);
+}
+
+/* ---------- Careers ---------- */
+
+.job-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.job-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) auto;
+  gap: 16px 32px;
+  align-items: center;
+  padding: 28px 8px;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.25s var(--ease), padding 0.35s var(--ease);
+}
+
+.job-row:hover {
+  background: var(--paper);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.job-row__dept {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brass-strong);
+  margin-bottom: 8px;
+}
+
+.job-row__title {
+  font-family: var(--font-display);
+  font-size: clamp(21px, 2vw, 26px);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0;
+}
+
+.job-row__meta {
+  display: grid;
+  gap: 6px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.job-row__meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.job-row__meta svg {
+  color: var(--brass-strong);
+  flex-shrink: 0;
+}
+
+.job-row__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.job-row:hover .job-row__cta svg {
+  transform: translateX(4px);
+}
+
+.job-row__cta svg {
+  transition: transform 0.25s var(--ease);
+}
+
+@media (max-width: 760px) {
+  .job-row {
+    grid-template-columns: 1fr;
+    padding: 24px 0;
+  }
+  .job-row:hover {
+    padding-left: 0;
+    padding-right: 0;
+    background: none;
+  }
+}
+
+.job-details {
+  margin: 0;
+  display: grid;
+  gap: 18px;
+}
+
+.job-details dt {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-dark-muted);
+}
+
+.job-details dd {
+  margin: 4px 0 0;
+  color: var(--white);
+  font-weight: 500;
+}
+
+.field input[type='file'] {
+  padding: 12px 14px;
+  cursor: pointer;
+}
+
+.field input[type='file']::file-selector-button {
+  margin-right: 14px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--white);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 /* ---------- Utilities ---------- */

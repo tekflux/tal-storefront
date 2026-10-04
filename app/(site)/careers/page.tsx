@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import PageHero from '@/components/site/PageHero'
+import Link from 'next/link'
 import Icon from '@/components/site/Icon'
 import { company } from '@/lib/site'
+import { openJobs } from '@/lib/jobs'
 
 export const metadata: Metadata = {
   title: 'Careers',
@@ -29,7 +31,52 @@ export default function CareersPage() {
         lead="We are a growing team across London and Kano. We look for people who are rigorous, take ownership, and care about doing things properly."
         image="/img/meeting.jpg"
         crumbs={[{ label: 'Careers' }]}
-      />
+      >
+        <div className="hero__ctas" style={{ marginTop: 32 }}>
+          <a href="#open-positions" className="btn btn--primary">
+            View open positions <Icon name="arrow" size={18} strokeWidth={2} />
+          </a>
+        </div>
+      </PageHero>
+
+      <section className="section section--white" id="open-positions">
+        <div className="wrap">
+          <div className="section-head reveal">
+            <div>
+              <p className="eyebrow">Open positions</p>
+              <h2 className="h2">
+                Current <em>job openings.</em>
+              </h2>
+            </div>
+            <p className="lead">
+              {openJobs.length > 0
+                ? `${openJobs.length} open ${openJobs.length === 1 ? 'role' : 'roles'} across our London and Kano offices.`
+                : 'There are no open roles right now. You are welcome to send an open application below.'}
+            </p>
+          </div>
+          {openJobs.length > 0 && (
+            <ul className="job-list reveal">
+              {openJobs.map(job => (
+                <li key={job.slug}>
+                  <Link href={`/careers/${job.slug}`} className="job-row">
+                    <div>
+                      <div className="job-row__dept">{job.department}</div>
+                      <h3 className="job-row__title">{job.title}</h3>
+                    </div>
+                    <div className="job-row__meta">
+                      <span><Icon name="pin" size={15} />{job.location}</span>
+                      <span>{job.type} · {job.workplace}</span>
+                    </div>
+                    <span className="job-row__cta">
+                      View role <Icon name="arrow" size={16} strokeWidth={2} />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </section>
 
       <section className="section">
         <div className="wrap">
@@ -41,8 +88,7 @@ export default function CareersPage() {
               </h2>
             </div>
             <p className="lead">
-              We have no advertised openings right now, but we always welcome applications from talented people in
-              these areas.
+              Don&apos;t see the right role? We always welcome applications from talented people in these areas.
             </p>
           </div>
           <div className="values reveal">
