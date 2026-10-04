@@ -50,6 +50,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: company.legalName }],
   alternates: { canonical: '/' },
+  icons: { icon: '/icon.svg' },
   openGraph: {
     title,
     description,
