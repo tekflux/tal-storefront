@@ -48,9 +48,11 @@ export default function ContactPage() {
                 <p>{o.address}</p>
                 <div className="office__links">
                   <a href={o.phoneHref}>
-                    <Icon name="phone" size={15} /> {o.phone}
+                    <Icon name="phone" size={16} />
+                    {o.phone}
                   </a>
                   <a href={`https://wa.me/${o.phoneHref.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer">
+                    <Icon name="chat" size={16} />
                     WhatsApp
                   </a>
                 </div>

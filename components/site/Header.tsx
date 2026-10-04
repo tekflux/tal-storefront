@@ -53,7 +53,6 @@ export default function Header() {
                   {item.children.map(child => (
                     <Link key={child.href} href={child.href}>
                       {child.label}
-                      <small>{child.note}</small>
                     </Link>
                   ))}
                   <div className="site-nav__menu-foot">

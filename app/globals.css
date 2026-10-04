@@ -415,7 +415,7 @@ a {
   position: absolute;
   top: calc(100% + 10px);
   left: 50%;
-  width: 420px;
+  width: 340px;
   padding: 10px;
   background: var(--white);
   color: var(--text);
@@ -455,15 +455,6 @@ a {
 
 .site-nav__menu a:hover {
   background: var(--paper);
-}
-
-.site-nav__menu a small {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--brass-strong);
-  white-space: nowrap;
 }
 
 .site-nav__menu-foot {
@@ -1757,6 +1748,17 @@ a {
   font-size: 15px;
   font-weight: 600;
   color: var(--ink);
+}
+
+.office__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.office__links a svg {
+  flex-shrink: 0;
+  color: var(--brass-strong);
 }
 
 .office__links a:hover {

@@ -1,6 +1,6 @@
 import type { ServiceIcon } from '@/lib/site'
 
-type IconName = ServiceIcon | 'arrow' | 'check' | 'menu' | 'close' | 'chevron' | 'mail' | 'phone' | 'pin'
+type IconName = ServiceIcon | 'arrow' | 'check' | 'menu' | 'close' | 'chevron' | 'mail' | 'phone' | 'pin' | 'chat'
 
 const paths: Record<IconName, React.ReactNode> = {
   arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
@@ -16,6 +16,12 @@ const paths: Record<IconName, React.ReactNode> = {
   ),
   phone: (
     <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" />
+  ),
+  chat: (
+    <>
+      <path d="M20 11.5a8 8 0 01-11.8 7L4 20l1.5-4.1A8 8 0 1120 11.5z" />
+      <path d="M9 10.5c.5 1.6 1.9 3 3.5 3.5l1.2-1 1.8.8" />
+    </>
   ),
   pin: (
     <>
