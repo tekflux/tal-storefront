@@ -50,7 +50,7 @@ export default function CareersPage() {
             </div>
             <p className="lead">
               {openJobs.length > 0
-                ? `${openJobs.length} open ${openJobs.length === 1 ? 'role' : 'roles'} across our London and Kano offices.`
+                ? `${openJobs.length} open ${openJobs.length === 1 ? 'role' : 'roles'} in ${[...new Set(openJobs.map(j => j.location.split(',')[0]))].join(' and ')}.`
                 : 'There are no open roles right now. You are welcome to send an open application below.'}
             </p>
           </div>

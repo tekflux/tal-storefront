@@ -25,9 +25,6 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   }
 }
 
-const formatDate = (iso: string) =>
-  new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
-
 export default async function JobPage({ params }: { params: Promise<Params> }) {
   const job = getJob((await params).slug)
   if (!job) notFound()
@@ -64,8 +61,6 @@ export default async function JobPage({ params }: { params: Promise<Params> }) {
     { label: 'Department', value: job.department },
     { label: 'Location', value: job.location },
     { label: 'Job type', value: `${job.type} · ${job.workplace}` },
-    { label: 'Posted', value: formatDate(job.posted) },
-    ...(job.closes ? [{ label: 'Closing date', value: formatDate(job.closes) }] : []),
   ]
 
   const sections = [
