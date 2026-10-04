@@ -49,8 +49,13 @@ export const metadata: Metadata = {
     'global sourcing',
   ],
   authors: [{ name: company.legalName }],
-  alternates: { canonical: '/' },
-  icons: { icon: '/icon.svg' },
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: '/apple-icon.png',
+  },
   openGraph: {
     title,
     description,
@@ -67,13 +72,54 @@ export const metadata: Metadata = {
   },
 }
 
+// Tells search engines who Talcora is (name, logo, offices, contact).
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${company.url}/#organization`,
+      name: company.name,
+      alternateName: 'Talcora Exim',
+      url: company.url,
+      logo: `${company.url}/icon-512.png`,
+      email: company.email,
+      description: company.description,
+      address: company.offices.map(o => ({
+        '@type': 'PostalAddress',
+        streetAddress: o.address,
+        addressLocality: o.city.split(',')[0],
+        addressCountry: o.city.split(',')[1]?.trim(),
+      })),
+      contactPoint: company.offices.map(o => ({
+        '@type': 'ContactPoint',
+        telephone: o.phone.replace(/\s/g, ''),
+        contactType: 'sales',
+        areaServed: o.id === 'uk' ? 'GB' : 'NG',
+        email: company.email,
+      })),
+      ...(company.socials.length ? { sameAs: company.socials.map(s => s.href) } : {}),
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${company.url}/#website`,
+      url: company.url,
+      name: company.name,
+      publisher: { '@id': `${company.url}/#organization` },
+    },
+  ],
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+        {children}
+      </body>
     </html>
   )
 }

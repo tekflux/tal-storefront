@@ -1,8 +1,13 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Icon from '@/components/site/Icon'
 import CountUp from '@/components/site/CountUp'
 import CtaBand from '@/components/site/CtaBand'
 import { commodities, credentials, process, regions, sectors, services, stats, values } from '@/lib/site'
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+}
 
 export default function HomePage() {
   return (
