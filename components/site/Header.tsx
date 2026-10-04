@@ -11,6 +11,14 @@ export default function Header() {
   const pathname = usePathname()
   const [solid, setSolid] = useState(false)
   const [open, setOpen] = useState(false)
+  // Hides the hover dropdown after a click until the pointer leaves it,
+  // otherwise it stays open over the new page.
+  const [menuDismissed, setMenuDismissed] = useState(false)
+
+  const dismissMenu = () => {
+    setMenuDismissed(true)
+    if (document.activeElement instanceof HTMLElement) document.activeElement.blur()
+  }
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 24)
@@ -39,9 +47,14 @@ export default function Header() {
         <nav className="site-nav" aria-label="Main">
           {navigation.map(item =>
             item.children ? (
-              <div className="site-nav__item" key={item.href}>
+              <div
+                className={`site-nav__item${menuDismissed ? ' is-dismissed' : ''}`}
+                key={item.href}
+                onMouseLeave={() => setMenuDismissed(false)}
+              >
                 <Link
                   href={item.href}
+                  onClick={dismissMenu}
                   className="site-nav__link"
                   aria-current={isActive(item.href) ? 'page' : undefined}
                   aria-haspopup="true"
@@ -51,12 +64,12 @@ export default function Header() {
                 </Link>
                 <div className="site-nav__menu">
                   {item.children.map(child => (
-                    <Link key={child.href} href={child.href}>
+                    <Link key={child.href} href={child.href} onClick={dismissMenu}>
                       {child.label}
                     </Link>
                   ))}
                   <div className="site-nav__menu-foot">
-                    <Link href={item.href} className="link-arrow" style={{ padding: 0 }}>
+                    <Link href={item.href} className="link-arrow" style={{ padding: 0 }} onClick={dismissMenu}>
                       View all sectors <Icon name="arrow" size={16} strokeWidth={2} />
                     </Link>
                   </div>

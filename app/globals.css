@@ -441,6 +441,12 @@ a {
   transform: translate(-50%, 0);
 }
 
+.site-nav__item.is-dismissed .site-nav__menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 8px);
+}
+
 .site-nav__menu a {
   display: flex;
   justify-content: space-between;

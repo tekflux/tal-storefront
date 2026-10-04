@@ -15,7 +15,6 @@ export async function POST(req: Request) {
     const jobSlug = field('job')
     const fullName = field('fullName')
     const email = field('email')
-    const phone = field('phone')
     const location = field('location')
     const linkedin = field('linkedin')
     const coverNote = field('coverNote')
@@ -48,7 +47,6 @@ export async function POST(req: Request) {
         <p style="margin-top: 0; color: #5a6675;">${escapeHtml(job.location)} · ${escapeHtml(job.type)}</p>
         <p><strong>Name:</strong> ${escapeHtml(fullName)}</p>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Phone:</strong> ${escapeHtml(phone || '-')}</p>
         <p><strong>Current location:</strong> ${escapeHtml(location || '-')}</p>
         <p><strong>LinkedIn / portfolio:</strong> ${escapeHtml(linkedin || '-')}</p>
         <p><strong>Cover note:</strong></p>

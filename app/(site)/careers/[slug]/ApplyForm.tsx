@@ -51,11 +51,7 @@ export default function ApplyForm({ job }: { job: string }) {
         <label htmlFor="email">Email <span>*</span></label>
         <input id="email" name="email" type="email" required autoComplete="email" />
       </div>
-      <div className="field">
-        <label htmlFor="phone">Phone / WhatsApp</label>
-        <input id="phone" name="phone" type="tel" autoComplete="tel" />
-      </div>
-      <div className="field">
+      <div className="field full">
         <label htmlFor="location">Current location</label>
         <input id="location" name="location" placeholder="City, country" />
       </div>
