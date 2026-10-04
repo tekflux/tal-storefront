@@ -18,6 +18,7 @@ npm run deploy     # build + deploy to Cloudflare
 | --- | --- |
 | Company details, offices, sectors, services, markets, stats | `lib/site.ts` |
 | Job adverts on /careers | `lib/jobs.ts` |
+| Insights articles on /insights | `content/insights/*.md` |
 | Commodity process content (e.g. cocoa) | `lib/agrocomm.ts` |
 | Design system (colours, type, components) | `app/globals.css` |
 | Header, footer, logo, shared sections | `components/site/` |
@@ -25,6 +26,34 @@ npm run deploy     # build + deploy to Cloudflare
 | Optimised site images | `public/img/` |
 
 Most content changes only need an edit to `lib/site.ts`.
+
+### Publishing an insights article
+
+Add a Markdown file to `content/insights/`. The file name becomes the web address, so
+`content/insights/sesame-market-update.md` is published at `/insights/sesame-market-update`.
+Start the file with this header, then write the article below it:
+
+```markdown
+---
+title: Your article title
+description: One or two sentences shown in Google results and on the article card.
+date: 2026-10-04
+category: Market Updates
+image: /img/vessel-sea.jpg
+author: Talcora Trade Desk
+---
+
+Your opening paragraph...
+
+## A section heading
+
+- A bullet point
+- **Bold text** and [a link](/contact)
+```
+
+Push to `main`. The newest articles appear first, on /insights and on the homepage. Add
+`draft: true` to the header to hide an article while you work on it. Article images go in
+`public/img/` and are referenced as `/img/your-image.jpg`.
 
 ### Posting a job
 

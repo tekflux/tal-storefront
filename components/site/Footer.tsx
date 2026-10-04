@@ -24,6 +24,7 @@ export default function Footer() {
             <ul>
               <li><Link href="/about">About us</Link></li>
               <li><Link href="/services">Services</Link></li>
+              <li><Link href="/insights">Insights</Link></li>
               <li><Link href="/careers">Careers</Link></li>
               <li><Link href="/contact">Contact</Link></li>
               {company.socials.map(s => (

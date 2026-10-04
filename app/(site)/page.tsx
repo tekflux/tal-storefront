@@ -3,6 +3,8 @@ import Link from 'next/link'
 import Icon from '@/components/site/Icon'
 import CountUp from '@/components/site/CountUp'
 import CtaBand from '@/components/site/CtaBand'
+import InsightCard from '@/components/site/InsightCard'
+import { insights } from '@/lib/insights'
 import { commodities, credentials, process, regions, sectors, services, stats, values } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -303,6 +305,35 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ---------- Latest insights ---------- */}
+      {insights.length > 0 && (
+        <section className="section section--white">
+          <div className="wrap">
+            <div className="section-head reveal">
+              <div>
+                <p className="eyebrow">Insights</p>
+                <h2 className="h2">
+                  Latest from <em>the trade desk.</em>
+                </h2>
+              </div>
+              <div>
+                <p className="lead" style={{ marginBottom: 24 }}>
+                  Practical guides on Incoterms, export documentation and commodity quality.
+                </p>
+                <Link href="/insights" className="link-arrow">
+                  All insights <Icon name="arrow" size={16} strokeWidth={2} />
+                </Link>
+              </div>
+            </div>
+            <div className="insight-grid">
+              {insights.slice(0, 3).map(a => (
+                <InsightCard key={a.slug} article={a} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <CtaBand />
     </>

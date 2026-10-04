@@ -383,6 +383,7 @@ export const navigation = [
     children: sectors.map(s => ({ label: s.name, href: `/sectors/${s.slug}` })),
   },
   { label: 'Services', href: '/services' },
+  { label: 'Insights', href: '/insights' },
   { label: 'Careers', href: '/careers' },
   { label: 'Contact', href: '/contact' },
 ]
