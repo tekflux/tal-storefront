@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
       messages: [
         {
           role: "user",
-          content: `Write a short professional trade email from Talcora Exim to ${buyer.contactPerson?.name || "the team"} (${buyer.contactPerson?.title || "Procurement Manager"}) at ${buyer.companyName}, ${buyer.country}.
+          content: `Write a short professional trade email from Talcora to ${buyer.contactPerson?.name || "the team"} (${buyer.contactPerson?.title || "Procurement Manager"}) at ${buyer.companyName}, ${buyer.country}.
 
 We supply ${commodity} from Nigeria/West Africa.
 - Under 180 words
@@ -41,7 +41,7 @@ SUBJECT: [subject line]
     const subjectMatch = txt.match(/SUBJECT:\s*(.+)/);
     const subject = subjectMatch
       ? subjectMatch[1].trim()
-      : "Trade Introduction — Talcora Exim";
+      : "Trade Introduction — Talcora";
     const body = txt.replace(/SUBJECT:.+\n?/, "").trim();
 
     return NextResponse.json({ subject, body });

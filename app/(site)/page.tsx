@@ -19,7 +19,7 @@ export default function HomePage() {
               Trusted trade between Africa <em>and the world.</em>
             </h1>
             <p className="hero__lead">
-              Talcora Exim sources, inspects and delivers quality goods across borders. We handle everything from
+              Talcora sources, inspects and delivers quality goods across borders. We handle everything from
               agricultural commodities to industrial supplies, with one accountable partner from origin to your door.
             </p>
             <div className="hero__ctas">

@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   if (!product) return {}
   return {
     title: `${product.name} Export`,
-    description: `${product.tagline}. How Talcora Exim sources, processes, grades and ships ${product.name.toLowerCase()} from West Africa.`,
+    description: `${product.tagline}. How Talcora sources, processes, grades and ships ${product.name.toLowerCase()} from West Africa.`,
     alternates: { canonical: `/sectors/${SECTOR}/${product.id}` },
   }
 }

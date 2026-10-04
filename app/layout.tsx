@@ -23,18 +23,18 @@ export const viewport: Viewport = {
   themeColor: '#0a1b2b',
 }
 
-const title = 'Talcora Exim | International Import & Export Company'
+const title = 'Talcora | International Import & Export Company'
 const description = company.description
 
 export const metadata: Metadata = {
   metadataBase: new URL(company.url),
   title: {
     default: title,
-    template: '%s | Talcora Exim',
+    template: '%s | Talcora',
   },
   description,
   keywords: [
-    'Talcora Exim',
+    'Talcora',
     'import export company',
     'international trade company',
     'export company Nigeria',
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     url: company.url,
     siteName: company.name,
     type: 'website',
-    images: [{ url: '/img/og.jpg', width: 1200, height: 630, alt: 'Talcora Exim — international import and export' }],
+    images: [{ url: '/img/og.jpg', width: 1200, height: 630, alt: 'Talcora — international import and export' }],
   },
   twitter: {
     card: 'summary_large_image',

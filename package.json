@@ -1,7 +1,7 @@
 {
-  "name": "talcora-exim",
+  "name": "talcora",
   "version": "1.0.0",
-  "description": "Talcora Exim - International Import & Export Website",
+  "description": "Talcora - International Import & Export Website",
   "scripts": {
     "build": "next build",
     "dev": "next dev",

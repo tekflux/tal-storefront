@@ -1,15 +1,15 @@
-// Single source of truth for Talcora Exim brand content.
+// Single source of truth for Talcora brand content.
 // Update company details, sectors, services and markets here.
 
 export const company = {
-  name: 'Talcora Exim',
-  legalName: 'Talcora Exim',
+  name: 'Talcora',
+  legalName: 'Talcora',
   domain: 'talcoraexim.com',
   url: 'https://talcoraexim.com',
   email: 'info@talcoraexim.com',
   tagline: 'Global import & export, done properly.',
   description:
-    'Talcora Exim is an international import and export company sourcing, inspecting and delivering quality goods between Africa, Europe, the Middle East, Asia and the Americas.',
+    'Talcora is an international import and export company sourcing, inspecting and delivering quality goods between Africa, Europe, the Middle East, Asia and the Americas.',
   offices: [
     {
       id: 'uk',

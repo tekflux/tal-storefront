@@ -45,7 +45,7 @@ export const PRODUCTS: Product[] = [
 
 Skilled farmers use machetes and long-handled pruning hooks to detach pods without damaging the fragile flower cushions that will produce the next season's fruit. The pods are gathered into woven baskets and transported to a central breaking station, where they are split open by hand, revealing 30 to 50 wet, pulp-covered beans per pod. This manual, labour-intensive process is what gives West African cocoa its reputation for quality — no machines, no shortcuts, just experienced hands selecting only what meets the standard.
 
-At this stage, the quality baseline for every export batch is established. Beans from different farms and micro-lots are assessed, and only those that show the right size, colour, and pulp coverage proceed to fermentation. It is this selectivity at origin that allows Talcora Exim to consistently deliver cocoa that meets the exacting standards of European and Asian chocolatiers.`,
+At this stage, the quality baseline for every export batch is established. Beans from different farms and micro-lots are assessed, and only those that show the right size, colour, and pulp coverage proceed to fermentation. It is this selectivity at origin that allows Talcora to consistently deliver cocoa that meets the exacting standards of European and Asian chocolatiers.`,
         images: [
           '/images-sectors/agric_commodities/cocoa/harvesting/1.jpg',
           '/images-sectors/agric_commodities/cocoa/harvesting/2.jpg',

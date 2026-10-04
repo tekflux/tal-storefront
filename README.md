@@ -1,6 +1,6 @@
-# Talcora Exim — Website
+# Talcora — Website
 
-Marketing site for **Talcora Exim** (talcoraexim.com), an international import & export company.
+Marketing site for **Talcora** (talcoraexim.com), an international import & export company.
 Next.js 15 (App Router), deployed to Cloudflare via OpenNext.
 
 ## Develop

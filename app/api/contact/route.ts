@@ -63,7 +63,7 @@ ${escapeHtml(message)}
     `
 
     const { error } = await resend.emails.send({
-      from: `Talcora Exim Website <${fromEmail}>`,
+      from: `Talcora Website <${fromEmail}>`,
       to: [toEmail],
       replyTo: email,
       subject: `Website Enquiry: ${subject}`,
@@ -167,7 +167,7 @@ function escapeHtml(value: string) {
 //     `
 
 //     const { error } = await resend.emails.send({
-//       from: `Talcora Exim Website <${fromEmail}>`,
+//       from: `Talcora Website <${fromEmail}>`,
 //       to: [toEmail],
 //       replyTo: email,
 //       subject: `Website Enquiry: ${subject}`,

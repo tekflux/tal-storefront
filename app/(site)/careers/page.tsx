@@ -5,7 +5,7 @@ import { company } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Careers',
-  description: 'Build a career in international trade with Talcora Exim in London and Kano.',
+  description: 'Build a career in international trade with Talcora in London and Kano.',
   alternates: { canonical: '/careers' },
 }
 

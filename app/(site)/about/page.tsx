@@ -8,7 +8,7 @@ import { company, regions, values } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Talcora Exim is an international import and export company with offices in London and Kano, connecting producers and manufacturers with buyers worldwide.',
+    'Talcora is an international import and export company with offices in London and Kano, connecting producers and manufacturers with buyers worldwide.',
   alternates: { canonical: '/about' },
 }
 
@@ -16,7 +16,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About Talcora Exim"
+        eyebrow="About Talcora"
         title={
           <>
             A trading house built on <em>integrity and precision.</em>
@@ -36,7 +36,7 @@ export default function AboutPage() {
             </h2>
             <div className="prose" style={{ marginTop: 28 }}>
               <p>
-                Talcora Exim was founded on a simple observation: good products and willing buyers are often kept
+                Talcora was founded on a simple observation: good products and willing buyers are often kept
                 apart by complexity. Unclear specifications, unreliable suppliers, missing documents and opaque
                 logistics turn promising trades into costly delays.
               </p>

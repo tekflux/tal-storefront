@@ -8,7 +8,7 @@ import { sectors } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'What We Trade',
   description:
-    'Agricultural commodities, food and consumer goods, building materials, machinery, energy equipment and healthcare supplies: the sectors Talcora Exim trades in.',
+    'Agricultural commodities, food and consumer goods, building materials, machinery, energy equipment and healthcare supplies: the sectors Talcora trades in.',
   alternates: { canonical: '/sectors' },
 }
 

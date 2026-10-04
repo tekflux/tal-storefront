@@ -8,7 +8,7 @@ import { company } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'Contact Us',
   description:
-    'Request a quote or speak to the Talcora Exim trade desk. Offices in London, United Kingdom and Kano, Nigeria.',
+    'Request a quote or speak to the Talcora trade desk. Offices in London, United Kingdom and Kano, Nigeria.',
   alternates: { canonical: '/contact' },
 }
 

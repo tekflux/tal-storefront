@@ -7,7 +7,7 @@ import { process, services } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'Export trading, import and procurement, freight and logistics, documentation, quality inspection and trade finance facilitation from Talcora Exim.',
+    'Export trading, import and procurement, freight and logistics, documentation, quality inspection and trade finance facilitation from Talcora.',
   alternates: { canonical: '/services' },
 }
 

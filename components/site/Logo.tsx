@@ -15,12 +15,9 @@ export function LogoMark({ size = 40 }: { size?: number }) {
 
 export default function Logo({ href = '/' }: { href?: string }) {
   return (
-    <Link href={href} className="logo" aria-label="Talcora Exim home">
+    <Link href={href} className="logo" aria-label="Talcora home">
       <LogoMark />
-      <span className="logo__word">
-        <span className="logo__name">Talcora</span>
-        <span className="logo__sub">Exim</span>
-      </span>
+      <span className="logo__name">Talcora</span>
     </Link>
   )
 }

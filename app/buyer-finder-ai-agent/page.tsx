@@ -567,7 +567,7 @@ export default function BuyerFinderAIAgent() {
   };
 
   const exportAll = () => {
-    let txt = `TALCORA EXIM — BUYER INTELLIGENCE\n${"=".repeat(44)}\n${commodity.toUpperCase()} · ${market.toUpperCase()}\n\n`;
+    let txt = `TALCORA — BUYER INTELLIGENCE\n${"=".repeat(44)}\n${commodity.toUpperCase()} · ${market.toUpperCase()}\n\n`;
     buyers.forEach((b, i) => {
       txt += `${i + 1}. ${b.companyName} | ${b.city}, ${b.country}\n`;
       txt += `   ${b.companyType} | Source: ${b.source || "—"}\n`;
@@ -591,7 +591,7 @@ export default function BuyerFinderAIAgent() {
             </div>
             <div>
               <div className="font-display text-lg font-semibold text-[#d4a843]">
-                Talcora Exim
+                Talcora
               </div>
               <div className="font-mono text-[9px] tracking-[0.14em] uppercase text-[#5a5855] mt-0.5">
                 Internal Portal
@@ -603,7 +603,7 @@ export default function BuyerFinderAIAgent() {
           </div>
           <div className="text-sm text-[#5a5855] mb-7 leading-relaxed">
             This buyer intelligence tool is restricted to authorised Talcora
-            Exim team members.
+            team members.
           </div>
           <div className="font-mono text-[9px] tracking-[0.12em] uppercase text-[#5a5855] mb-1.5">
             Password
@@ -637,7 +637,7 @@ export default function BuyerFinderAIAgent() {
             Access Portal →
           </button>
           <div className="mt-6 pt-5 border-t-[0.5px] border-[rgba(212,168,67,0.15)] text-[11px] text-[#5a5855] text-center leading-relaxed">
-            🔒 Secured · Talcora Exim Internal Use Only
+            🔒 Secured · Talcora Internal Use Only
             <br />
             Contact your administrator if you need access
           </div>
@@ -659,7 +659,7 @@ export default function BuyerFinderAIAgent() {
               </div>
               <div>
                 <div className="font-display text-[15px] font-semibold text-[#d4a843]">
-                  Talcora Exim
+                  Talcora
                 </div>
                 <div className="font-mono text-[9px] tracking-[0.12em] uppercase text-[#5a5855] mt-0.5">
                   Buyer Intelligence System
