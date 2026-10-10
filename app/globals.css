@@ -2539,6 +2539,31 @@ a {
   to { transform: scale(1); }
 }
 
+/* Homepage hero: five sector photos cross-fade, 6s each (30s loop). The first starts
+   already visible. Each new photo fades in over the one before, which only fades out
+   once it is covered, so there is no dark dip between slides. */
+.hero__media--slides img {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: hero-slide 30s linear infinite, hero-slide-zoom 30s ease-out infinite;
+  animation-delay: calc(var(--i) * 6s - 1.2s);
+}
+
+@keyframes hero-slide {
+  0% { opacity: 0; }
+  4% { opacity: 1; }
+  24% { opacity: 1; }
+  28% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes hero-slide-zoom {
+  0% { transform: scale(1.08); }
+  28% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
 .js .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -2563,6 +2588,13 @@ a {
   .js .reveal {
     opacity: 1;
     transform: none;
+  }
+  /* no cross-fade: show the first hero photo only */
+  .hero__media--slides img {
+    animation: none !important;
+  }
+  .hero__media--slides img:first-child {
+    opacity: 1;
   }
 }
 

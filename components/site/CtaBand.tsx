@@ -20,7 +20,7 @@ export default function CtaBand({
       <div className="wrap">
         <div className="cta-band on-dark reveal">
           <div className="cta-band__media">
-            <img src="/img/vessel-sea.jpg" alt="" loading="lazy" />
+            <img src="/img/sectors/supply/collage-main.jpg" alt="" loading="lazy" />
           </div>
           <div>
             <p className="eyebrow">Start a trade</p>

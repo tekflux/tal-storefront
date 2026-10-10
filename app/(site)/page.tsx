@@ -11,13 +11,30 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 }
 
+// The hero cycles through the sectors so the first thing visitors see is what Talcora trades.
+const heroSlides = [
+  { src: '/img/agro.jpg', alt: 'Cocoa pods being harvested' },
+  { src: '/img/sectors/energy/hero.jpg', alt: 'Solar farm' },
+  { src: '/img/sectors/construction/hero.jpg', alt: 'Tower cranes on a construction site' },
+  { src: '/img/food-market.jpg', alt: 'Fresh produce at a food market' },
+  { src: '/img/hero-port.jpg', alt: 'Container port at sunset' },
+]
+
 export default function HomePage() {
   return (
     <>
       {/* ---------- Hero ---------- */}
       <section className="hero on-dark">
-        <div className="hero__media">
-          <img src="/img/hero-port.jpg" alt="Container vessel at port at sunset" fetchPriority="high" />
+        <div className="hero__media hero__media--slides">
+          {heroSlides.map((slide, i) => (
+            <img
+              key={slide.src}
+              src={slide.src}
+              alt={slide.alt}
+              fetchPriority={i === 0 ? 'high' : 'low'}
+              style={{ ['--i' as string]: i }}
+            />
+          ))}
         </div>
         <div className="wrap">
           <div className="hero__content">
