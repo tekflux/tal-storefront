@@ -303,10 +303,6 @@ export default async function SectorPage({ params }: { params: Promise<Params> }
                     <Icon name="phone" size={16} />
                     {o.phone}
                   </a>
-                  <a href={`https://wa.me/${o.phoneHref.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer">
-                    <Icon name="chat" size={16} />
-                    WhatsApp
-                  </a>
                 </div>
               </div>
             ))}

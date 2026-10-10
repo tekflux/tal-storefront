@@ -59,7 +59,7 @@ export default function ContactForm({
         <input id="email" name="email" type="email" required autoComplete="email" />
       </div>
       <div className="field">
-        <label htmlFor="phone">Phone / WhatsApp</label>
+        <label htmlFor="phone">Phone</label>
         <input id="phone" name="phone" type="tel" autoComplete="tel" />
       </div>
       <div className="field">

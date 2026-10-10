@@ -28,9 +28,10 @@ export async function POST(req: Request) {
 
     const resendApiKey = process.env.RESEND_API_KEY
     const toEmail = process.env.CONTACT_TO_EMAIL
-    const fromEmail = process.env.CONTACT_FROM_EMAIL
+    // A sender label only: Resend can send from any address on the verified domain, no mailbox needed
+    const fromEmail = process.env.CONTACT_FROM_EMAIL || 'noreply@talcoraexim.com'
 
-    if (!resendApiKey || !toEmail || !fromEmail) {
+    if (!resendApiKey || !toEmail) {
       return NextResponse.json(
         { message: 'Server email configuration is missing.' },
         { status: 500 }
@@ -47,7 +48,7 @@ export async function POST(req: Request) {
         <p><strong>Last Name:</strong> ${escapeHtml(lastName)}</p>
         <p><strong>Company Name:</strong> ${escapeHtml(company || '-')}</p>
         <p><strong>Email Address:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Phone / WhatsApp:</strong> ${escapeHtml(phone || '-')}</p>
+        <p><strong>Phone:</strong> ${escapeHtml(phone || '-')}</p>
         <p><strong>Enquiry Type:</strong> ${escapeHtml(
           enquiryType || 'General Enquiry'
         )}</p>
@@ -151,7 +152,7 @@ function escapeHtml(value: string) {
 //         <p><strong>Last Name:</strong> ${escapeHtml(lastName)}</p>
 //         <p><strong>Company Name:</strong> ${escapeHtml(company || '-')}</p>
 //         <p><strong>Email Address:</strong> ${escapeHtml(email)}</p>
-//         <p><strong>Phone / WhatsApp:</strong> ${escapeHtml(phone || '-')}</p>
+//         <p><strong>Phone:</strong> ${escapeHtml(phone || '-')}</p>
 //         <p><strong>Enquiry Type:</strong> ${escapeHtml(
 //           enquiryType || 'General Enquiry'
 //         )}</p>
