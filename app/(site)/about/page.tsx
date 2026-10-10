@@ -47,7 +47,7 @@ export default function AboutPage() {
               </p>
               <p>
                 Today we export West African agricultural commodities to buyers in Europe, Asia, the Middle East and
-                North America, and import building materials, machinery, energy equipment, construction supplies and
+                North America, and import machinery, energy equipment, construction supplies, general supplies and
                 consumer goods for growing businesses.
               </p>
             </div>

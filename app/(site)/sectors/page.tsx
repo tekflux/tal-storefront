@@ -8,7 +8,7 @@ import { sectorHref, sectors } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'What We Trade',
   description:
-    'Agricultural commodities, food and consumer goods, building materials, machinery, energy and construction: the sectors Talcora trades in.',
+    'Agricultural commodities, food and consumer goods, machinery, energy, construction and general supply: the sectors Talcora trades in.',
   alternates: { canonical: '/sectors' },
 }
 
@@ -39,7 +39,8 @@ export default function SectorsPage() {
               >
                 <img src={s.image} alt="" loading="lazy" />
                 <h2 className="sector-card__title">{s.name}</h2>
-                <p className="sector-card__text">{s.summary}</p>
+                {/* `summary` is the lead on the sector's own subdomain; use the short line here so it isn't duplicated. */}
+                <p className="sector-card__text">{s.short}</p>
                 <span className="sector-card__more">
                   Explore sector <Icon name="arrow" size={16} strokeWidth={2} />
                 </span>

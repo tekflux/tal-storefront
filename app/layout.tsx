@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     'cocoa cashew sesame exporter',
     'solar equipment supplier',
     'construction procurement',
-    'building materials supplier',
+    'general supply company',
     'machinery supplier',
     'African food wholesale',
   ],

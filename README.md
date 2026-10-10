@@ -12,10 +12,10 @@ One app serves every host. `middleware.ts` routes each sector subdomain to its p
 | talcoraexim.com, www.talcoraexim.com | Corporate site |
 | agro.talcoraexim.com (and /cocoa) | Agricultural Commodities |
 | foods.talcoraexim.com | Food & Consumer Goods |
-| materials.talcoraexim.com | Industrial & Building Materials |
 | machinery.talcoraexim.com | Machinery & Equipment |
 | energy.talcoraexim.com | Energy & Power Solutions |
 | construction.talcoraexim.com | Construction & Infrastructure |
+| supply.talcoraexim.com | General Supply |
 
 Old `/sectors/<slug>` addresses redirect (301) to the subdomain. A sector's subdomain, Google title,
 description and keywords are set in `lib/site.ts`. Each subdomain must also be added as a custom domain

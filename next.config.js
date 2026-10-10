@@ -10,6 +10,8 @@ const nextConfig = {
       { source: '/products/:path*', destination: '/sectors', permanent: true },
       // Healthcare was replaced by Construction; send old links to the sectors overview.
       { source: '/sectors/healthcare-supplies', destination: '/sectors', permanent: true },
+      // Building materials now sit under Construction.
+      { source: '/sectors/building-materials', destination: 'https://construction.talcoraexim.com', permanent: true },
       { source: '/about/:path+', destination: '/about', permanent: true },
     ]
   },
