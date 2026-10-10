@@ -2406,3 +2406,66 @@ a {
     transform: none;
   }
 }
+
+/* ---------- Sector subdomains ---------- */
+
+.values--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 860px) {
+  .values--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.faq {
+  border-top: 1px solid var(--line);
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq__item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__item summary::after {
+  content: '+';
+  flex-shrink: 0;
+  font-family: var(--font-sans);
+  font-size: 24px;
+  color: var(--brass-strong);
+  transition: transform 0.25s var(--ease);
+}
+
+.faq__item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq__item p {
+  margin: 0 0 24px;
+  max-width: 620px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+section[id] {
+  scroll-margin-top: 80px;
+}

@@ -5,9 +5,18 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Logo from './Logo'
 import Icon from './Icon'
-import { navigation, siteHref } from '@/lib/site'
+import { navigation, siteHref, type NavItem } from '@/lib/site'
 
-export default function Header() {
+// Sector subdomains pass their own brand, menu and quote link; the defaults are the corporate site's.
+export default function Header({
+  brand,
+  nav = navigation,
+  quoteHref = siteHref('/contact'),
+}: {
+  brand?: { name: string; href: string }
+  nav?: NavItem[]
+  quoteHref?: string
+} = {}) {
   const pathname = usePathname()
   const [solid, setSolid] = useState(false)
   const [open, setOpen] = useState(false)
@@ -37,15 +46,19 @@ export default function Header() {
     return () => window.removeEventListener('keydown', onKey)
   }, [open])
 
-  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`)
+  const isActive = (href: string) => {
+    const path = href.replace(/^https?:\/\/[^/]+/, '') || '/'
+    return path.startsWith('/') && !path.includes('#') && (pathname === path || pathname.startsWith(`${path}/`))
+  }
+  const logo = <Logo href={brand?.href} name={brand?.name} />
 
   return (
     <header className={`site-header${solid ? ' is-solid' : ''}`}>
       <div className="wrap site-header__bar">
-        <Logo />
+        {logo}
 
         <nav className="site-nav" aria-label="Main">
-          {navigation.map(item =>
+          {nav.map(item =>
             item.children ? (
               <div
                 className={`site-nav__item${menuDismissed ? ' is-dismissed' : ''}`}
@@ -53,7 +66,7 @@ export default function Header() {
                 onMouseLeave={() => setMenuDismissed(false)}
               >
                 <Link
-                  href={siteHref(item.href)}
+                  href={item.href}
                   onClick={dismissMenu}
                   className="site-nav__link"
                   aria-current={isActive(item.href) ? 'page' : undefined}
@@ -69,7 +82,7 @@ export default function Header() {
                     </Link>
                   ))}
                   <div className="site-nav__menu-foot">
-                    <Link href={siteHref(item.href)} className="link-arrow" style={{ padding: 0 }} onClick={dismissMenu}>
+                    <Link href={item.href} className="link-arrow" style={{ padding: 0 }} onClick={dismissMenu}>
                       View all sectors <Icon name="arrow" size={16} strokeWidth={2} />
                     </Link>
                   </div>
@@ -78,7 +91,7 @@ export default function Header() {
             ) : (
               <Link
                 key={item.href}
-                href={siteHref(item.href)}
+                href={item.href}
                 className="site-nav__link"
                 aria-current={isActive(item.href) ? 'page' : undefined}
               >
@@ -89,7 +102,7 @@ export default function Header() {
         </nav>
 
         <div className="site-header__actions">
-          <Link href={siteHref('/contact')} className="btn btn--primary btn--sm">
+          <Link href={quoteHref} className="btn btn--primary btn--sm">
             Request a quote
           </Link>
           <button className="menu-toggle" onClick={() => setOpen(true)} aria-label="Open menu" aria-expanded={open}>
@@ -101,18 +114,18 @@ export default function Header() {
       {open && (
         <div className="mobile-nav" role="dialog" aria-modal="true" aria-label="Menu">
           <div className="mobile-nav__top">
-            <Logo />
+            {logo}
             <button className="menu-toggle" onClick={() => setOpen(false)} aria-label="Close menu">
               <Icon name="close" />
             </button>
           </div>
           <ul className="mobile-nav__list">
             <li>
-              <Link href={siteHref('/')}>Home</Link>
+              <Link href={brand?.href ?? siteHref('/')}>Home</Link>
             </li>
-            {navigation.map(item => (
+            {nav.map(item => (
               <li key={item.href}>
-                <Link href={siteHref(item.href)}>{item.label}</Link>
+                <Link href={item.href} onClick={() => setOpen(false)}>{item.label}</Link>
                 {item.children && (
                   <ul className="mobile-nav__sub">
                     {item.children.map(child => (
@@ -125,7 +138,7 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <Link href={siteHref('/contact')} className="btn btn--primary" style={{ marginTop: 'auto' }}>
+          <Link href={quoteHref} className="btn btn--primary" style={{ marginTop: 'auto' }} onClick={() => setOpen(false)}>
             Request a quote <Icon name="arrow" size={18} strokeWidth={2} />
           </Link>
         </div>

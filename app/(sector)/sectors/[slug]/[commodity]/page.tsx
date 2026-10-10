@@ -5,7 +5,7 @@ import PageHero from '@/components/site/PageHero'
 import CtaBand from '@/components/site/CtaBand'
 import Icon from '@/components/site/Icon'
 import { getProduct, PRODUCTS } from '@/lib/agrocomm'
-import { getSector, sectorHref, sectorOrigin, siteHref } from '@/lib/site'
+import { getSector, sectorHref, sectorOrigin } from '@/lib/site'
 
 type Params = { slug: string; commodity: string }
 
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const product = await load(params)
   if (!product) return {}
   return {
-    title: `${product.name} Export`,
+    title: { absolute: `${product.name} Exporter from Nigeria | ${agro.brand}` },
     description: `${product.tagline}. How Talcora sources, processes, grades and ships ${product.name.toLowerCase()} from West Africa.`,
     alternates: { canonical: `${sectorOrigin(agro)}/${product.id}` },
   }
@@ -48,11 +48,8 @@ export default async function CommodityPage({ params }: { params: Promise<Params
         }
         lead={`${product.tagline}. Follow each stage of how we source, process, grade and ship ${product.name.toLowerCase()} to buyers worldwide.`}
         image="/img/cocoa-farm.jpg"
-        crumbs={[
-          { label: 'What We Trade', href: siteHref('/sectors') },
-          { label: 'Agricultural Commodities', href: sectorHref(agro) },
-          { label: product.name },
-        ]}
+        home={{ label: agro.brand, href: sectorHref(agro) }}
+        crumbs={[{ label: product.name }]}
       >
         <div className="spec-chips">
           {[...product.specs, ...product.certifications].map(s => (
@@ -91,7 +88,7 @@ export default async function CommodityPage({ params }: { params: Promise<Params
 
           <div style={{ marginTop: 24 }}>
             <Link href={sectorHref(agro)} className="link-arrow">
-              Back to agricultural commodities <Icon name="arrow" size={16} strokeWidth={2} />
+              Back to all agricultural commodities <Icon name="arrow" size={16} strokeWidth={2} />
             </Link>
           </div>
         </div>
@@ -104,6 +101,7 @@ export default async function CommodityPage({ params }: { params: Promise<Params
           </>
         }
         lead="Tell us your grade, volume, packaging and destination port. We will come back with availability, pricing and shipment dates."
+        href={`${sectorHref(agro)}#quote`}
       />
     </>
   )

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import PageHero from '@/components/site/PageHero'
 import Icon from '@/components/site/Icon'
-import ContactForm from './ContactForm'
+import ContactForm from '@/components/site/ContactForm'
 import OfficeMap from './OfficeMap'
 import { company } from '@/lib/site'
 

@@ -14,11 +14,11 @@ export function LogoMark({ size = 40 }: { size?: number }) {
   )
 }
 
-export default function Logo({ href = siteHref('/') }: { href?: string }) {
+export default function Logo({ href = siteHref('/'), name = 'Talcora' }: { href?: string; name?: string }) {
   return (
-    <Link href={href} className="logo" aria-label="Talcora home">
+    <Link href={href} className="logo" aria-label={`${name} home`}>
       <LogoMark />
-      <span className="logo__name">Talcora</span>
+      <span className="logo__name">{name}</span>
     </Link>
   )
 }

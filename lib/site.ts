@@ -62,6 +62,12 @@ export type Sector = {
   seoTitle: string
   seoDescription: string
   keywords: string[]
+  // Name the sector trades under on its subdomain, e.g. 'Talcora Energy'.
+  brand: string
+  audiences: { title: string; body: string }[]
+  faqs: { q: string; a: string }[]
+  // Example shown in the quote form's subject field.
+  quoteExample: string
   short: string
   direction: TradeDirection
   image: string
@@ -75,6 +81,35 @@ export const sectors: Sector[] = [
   {
     slug: 'agricultural-commodities',
     subdomain: 'agro',
+    brand: 'Talcora Agro',
+    quoteExample: 'e.g. 2 × 40ft sesame seeds, CIF Rotterdam',
+    audiences: [
+      { title: 'Processors & manufacturers', body: 'Chocolate makers, oil mills, spice processors and food manufacturers buying to a fixed specification.' },
+      { title: 'Importers & trading houses', body: 'Commodity importers and traders in Europe, Asia, the Middle East and North America.' },
+      { title: 'Wholesalers & distributors', body: 'Distributors supplying the ingredient, health-food and specialty food markets.' },
+    ],
+    faqs: [
+      {
+        q: 'What is your minimum order?',
+        a: 'Most commodities ship in full 20ft or 40ft containers. Tell us the volume you need and we will confirm what we can supply.',
+      },
+      {
+        q: 'Which Incoterms do you ship on?',
+        a: 'FOB, CFR and CIF from Apapa, Tin Can Island and Onne. Sea freight to major ports in Europe, Asia, the Middle East and North America typically takes 18 to 28 days.',
+      },
+      {
+        q: 'How is quality checked?',
+        a: 'Every lot is cleaned, dried, graded and checked at origin, then inspected by SGS, Bureau Veritas or another recognised body before it ships. You receive the reports and certificates.',
+      },
+      {
+        q: 'Which documents come with a shipment?',
+        a: 'Certificate of origin, phytosanitary and fumigation certificates, the inspection report, bill of lading, commercial invoice and packing list, plus anything your market requires.',
+      },
+      {
+        q: 'Can I get samples first?',
+        a: 'Yes. We can send samples of most commodities before you commit to an order.',
+      },
+    ],
     name: 'Agricultural Commodities',
     seoTitle: 'Cocoa, Cashew, Sesame & Ginger Exporter from Nigeria | Talcora Agro',
     seoDescription:
@@ -119,6 +154,31 @@ export const sectors: Sector[] = [
   {
     slug: 'food-consumer-goods',
     subdomain: 'foods',
+    brand: 'Talcora Foods',
+    quoteExample: 'e.g. Mixed pallet of African flours and spices, delivered London',
+    audiences: [
+      { title: 'Retailers & online grocers', body: 'Shops, supermarkets and online grocers stocking African food lines in the UK and Europe.' },
+      { title: 'Wholesalers & distributors', body: 'Cash-and-carry and distribution businesses buying by the pallet or container.' },
+      { title: 'Importers in West Africa', body: 'Businesses importing rice, sugar, flour, edible oils and household goods into West Africa.' },
+    ],
+    faqs: [
+      {
+        q: 'Do you supply African food products in the UK?',
+        a: 'Yes. Our head office is in London, and we supply African flours, spices and packaged foods to retailers, wholesalers and online grocers in the UK and Europe.',
+      },
+      {
+        q: 'Can you meet UK and EU labelling rules?',
+        a: 'We check labelling, ingredients and food-safety documents against the destination market before goods ship, so stock arrives ready to sell.',
+      },
+      {
+        q: 'Can I order several products in one shipment?',
+        a: 'Yes. We consolidate mixed loads so several product lines can travel in one container.',
+      },
+      {
+        q: 'Do you offer private-label products?',
+        a: 'We supply both branded and private-label lines. Tell us the product and volumes and we will confirm the options.',
+      },
+    ],
     name: 'Food & Consumer Goods',
     seoTitle: 'African Food Products & Staple Foods Wholesale Supplier | Talcora Foods',
     seoDescription:
@@ -155,6 +215,31 @@ export const sectors: Sector[] = [
   {
     slug: 'general-supply',
     subdomain: 'supply',
+    brand: 'Talcora Supply',
+    quoteExample: 'e.g. IT equipment and office consumables for a new branch',
+    audiences: [
+      { title: 'Businesses & factories', body: 'Operations that need consumables, packaging and spare parts kept in stock.' },
+      { title: 'Institutions & public bodies', body: 'Schools, hospitals and government bodies buying against an item list or tender.' },
+      { title: 'Contractors', body: 'Contractors equipping new sites and offices for a project.' },
+    ],
+    faqs: [
+      {
+        q: 'What can you supply?',
+        a: 'Industrial consumables, packaging, office and IT equipment, vehicle and machinery parts, hardware and electrical goods. If an item is not listed, send it to us and we will confirm whether we can source it.',
+      },
+      {
+        q: 'Can you quote against a tender or item list?',
+        a: 'Yes. Send the list or tender document and we will price each line, benchmarked across suppliers.',
+      },
+      {
+        q: 'Will I get one invoice?',
+        a: 'Yes. We consolidate the order and invoice it as one supply, however many suppliers it came from.',
+      },
+      {
+        q: 'Do you deliver to our site?',
+        a: 'We deliver to your warehouse, office or project site, and handle customs clearance where goods are imported.',
+      },
+    ],
     name: 'General Supply',
     seoTitle: 'General Supply & Procurement Company, UK and Nigeria | Talcora Supply',
     seoDescription:
@@ -194,6 +279,31 @@ export const sectors: Sector[] = [
   {
     slug: 'machinery-equipment',
     subdomain: 'machinery',
+    brand: 'Talcora Machinery',
+    quoteExample: 'e.g. 2 tonne/hour maize milling line, delivered Kano',
+    audiences: [
+      { title: 'Agro-processors', body: 'Businesses setting up or expanding cleaning, hulling, milling and packing lines.' },
+      { title: 'Construction firms', body: 'Contractors adding mixers, compactors and other site plant.' },
+      { title: 'Warehouses & factories', body: 'Operations that need forklifts, racking, conveyors and backup power.' },
+    ],
+    faqs: [
+      {
+        q: 'How do you choose the right machine?',
+        a: 'We start from your capacity, power supply and budget, then shortlist manufacturers whose equipment fits and compare the options with you.',
+      },
+      {
+        q: 'Is equipment inspected before it ships?',
+        a: 'Yes. We arrange a factory acceptance inspection so each machine is checked against the agreed specification before it is crated.',
+      },
+      {
+        q: 'Can you ship large or heavy equipment?',
+        a: 'Yes. We handle crating, out-of-gauge and break-bulk freight, and heavy-lift coordination.',
+      },
+      {
+        q: 'What happens after delivery?',
+        a: 'We coordinate installation support with the manufacturer and keep OEM or approved spare parts supplied.',
+      },
+    ],
     name: 'Machinery & Equipment',
     seoTitle: 'Agro-Processing Machinery, Generators & Forklifts Supplier | Talcora',
     seoDescription:
@@ -231,6 +341,31 @@ export const sectors: Sector[] = [
   {
     slug: 'energy-power',
     subdomain: 'energy',
+    brand: 'Talcora Energy',
+    quoteExample: 'e.g. 200 × 550W bifacial panels and 50kWh storage, delivered Lagos',
+    audiences: [
+      { title: 'Solar installers', body: 'Installers who need dependable supply of panels, inverters and batteries.' },
+      { title: 'Developers & EPC contractors', body: 'Teams building commercial, industrial and off-grid power projects.' },
+      { title: 'Businesses & estates', body: 'Factories, offices and estates cutting generator costs with solar and storage.' },
+    ],
+    faqs: [
+      {
+        q: 'Which solar brands do you supply?',
+        a: 'We source tier-one modules, hybrid inverters and lithium batteries from established manufacturers, and confirm the brand and model in every quotation.',
+      },
+      {
+        q: 'Do products come with manufacturer warranties?',
+        a: 'Yes. We verify certifications and warranties before purchase and pass the documents on to you.',
+      },
+      {
+        q: 'Can you supply everything for a project?',
+        a: 'Yes. Send your design or load requirements and we will supply the full bill of materials: panels, inverters, batteries, mounting, cables and protection.',
+      },
+      {
+        q: 'How are lithium batteries shipped?',
+        a: 'Lithium batteries travel as regulated cargo. We handle the packaging, labelling and carrier documents they require.',
+      },
+    ],
     name: 'Energy & Power Solutions',
     seoTitle: 'Solar Panels, Inverters & Lithium Batteries Supplier | Talcora Energy',
     seoDescription:
@@ -267,6 +402,31 @@ export const sectors: Sector[] = [
   {
     slug: 'construction',
     subdomain: 'construction',
+    brand: 'Talcora Construction',
+    quoteExample: 'e.g. Rebar, cement and formwork for a 3-storey build, Abuja',
+    audiences: [
+      { title: 'Contractors', body: 'Main contractors and subcontractors who need materials on site to programme.' },
+      { title: 'Developers', body: 'Residential and commercial developers procuring for a whole scheme.' },
+      { title: 'Infrastructure projects', body: 'Road, drainage and public works that need civil materials in volume.' },
+    ],
+    faqs: [
+      {
+        q: 'Can you procure from a bill of quantities?',
+        a: 'Yes. Send the BoQ and we will price each line from vetted manufacturers, benchmarked to keep landed costs down.',
+      },
+      {
+        q: 'Can deliveries follow our construction programme?',
+        a: 'Yes. We phase orders so materials reach site when each stage needs them, rather than all at once.',
+      },
+      {
+        q: 'Do you also supply building materials?',
+        a: 'Yes: steel, cement, tiles and roofing sheets, alongside prefabricated buildings, formwork, scaffolding and civil works materials.',
+      },
+      {
+        q: 'Who handles customs and delivery?',
+        a: 'We do. Customs clearance and delivery to site are part of the service.',
+      },
+    ],
     name: 'Construction & Infrastructure',
     seoTitle: 'Construction Project Procurement & Site Supply | Talcora Construction',
     seoDescription:
@@ -476,15 +636,28 @@ export const values = [
   },
 ]
 
-export const navigation = [
-  { label: 'About', href: '/about' },
+export type NavItem = { label: string; href: string; children?: { label: string; href: string }[] }
+
+export const navigation: NavItem[] = [
+  { label: 'About', href: siteHref('/about') },
   {
     label: 'What We Trade',
-    href: '/sectors',
+    href: siteHref('/sectors'),
     children: sectors.map(s => ({ label: s.name, href: sectorHref(s) })),
   },
-  { label: 'Services', href: '/services' },
-  { label: 'Insights', href: '/insights' },
-  { label: 'Careers', href: '/careers' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Services', href: siteHref('/services') },
+  { label: 'Insights', href: siteHref('/insights') },
+  { label: 'Careers', href: siteHref('/careers') },
+  { label: 'Contact', href: siteHref('/contact') },
 ]
+
+/** Menu shown on a sector's subdomain: only that sector's own sections. */
+export function sectorNavigation(sector: Sector): NavItem[] {
+  const home = sectorHref(sector)
+  return [
+    { label: 'Products', href: `${home}#products` },
+    { label: 'Who we supply', href: `${home}#clients` },
+    { label: 'FAQs', href: `${home}#faqs` },
+    { label: 'Contact', href: `${home}#quote` },
+  ]
+}

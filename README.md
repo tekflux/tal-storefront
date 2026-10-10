@@ -17,7 +17,8 @@ One app serves every host. `middleware.ts` routes each sector subdomain to its p
 | construction.talcoraexim.com | Construction & Infrastructure |
 | supply.talcoraexim.com | General Supply |
 
-Old `/sectors/<slug>` addresses redirect (301) to the subdomain. A sector's subdomain, Google title,
+Each subdomain is branded as its own site (`Talcora Energy`, ...): its header, menu, footer, "who we supply",
+FAQs and quote form only cover that sector (`app/(sector)/sectors/[slug]/layout.tsx`). Old `/sectors/<slug>` addresses redirect (301) to the subdomain. A sector's subdomain, Google title,
 description and keywords are set in `lib/site.ts`. Each subdomain must also be added as a custom domain
 on the Cloudflare project. In `npm run dev` sectors stay on localhost under `/sectors/<slug>`.
 

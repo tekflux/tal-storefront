@@ -13,7 +13,14 @@ const enquiryTypes = [
 
 type Status = { kind: 'idle' | 'sending' | 'ok' | 'error'; message?: string }
 
-export default function ContactForm() {
+// On a sector subdomain, `enquiryType` is fixed (e.g. 'Talcora Energy quote request') and the dropdown is hidden.
+export default function ContactForm({
+  enquiryType,
+  subjectExample = 'e.g. 2 × 40ft sesame seeds, CIF Rotterdam',
+}: {
+  enquiryType?: string
+  subjectExample?: string
+} = {}) {
   const [status, setStatus] = useState<Status>({ kind: 'idle' })
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -59,17 +66,21 @@ export default function ContactForm() {
         <label htmlFor="company">Company</label>
         <input id="company" name="company" autoComplete="organization" />
       </div>
-      <div className="field">
-        <label htmlFor="enquiryType">Enquiry type</label>
-        <select id="enquiryType" name="enquiryType" defaultValue={enquiryTypes[0]}>
-          {enquiryTypes.map(t => (
-            <option key={t}>{t}</option>
-          ))}
-        </select>
-      </div>
+      {enquiryType ? (
+        <input type="hidden" name="enquiryType" value={enquiryType} />
+      ) : (
+        <div className="field">
+          <label htmlFor="enquiryType">Enquiry type</label>
+          <select id="enquiryType" name="enquiryType" defaultValue={enquiryTypes[0]}>
+            {enquiryTypes.map(t => (
+              <option key={t}>{t}</option>
+            ))}
+          </select>
+        </div>
+      )}
       <div className="field full">
         <label htmlFor="subject">Subject <span>*</span></label>
-        <input id="subject" name="subject" required placeholder="e.g. 2 × 40ft sesame seeds, CIF Rotterdam" />
+        <input id="subject" name="subject" required placeholder={subjectExample} />
       </div>
       <div className="field full">
         <label htmlFor="message">Message <span>*</span></label>

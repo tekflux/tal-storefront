@@ -9,9 +9,11 @@ export default function CtaBand({
     </>
   ),
   lead = 'Share the product, volume and destination. Our trade desk replies within one business day with availability, pricing and lead times.',
+  href = siteHref('/contact'),
 }: {
   title?: React.ReactNode
   lead?: string
+  href?: string
 }) {
   return (
     <section className="section">
@@ -28,7 +30,7 @@ export default function CtaBand({
             </p>
           </div>
           <div className="cta-band__actions">
-            <Link href={siteHref('/contact')} className="btn btn--primary">
+            <Link href={href} className="btn btn--primary">
               Request a quote <Icon name="arrow" size={18} strokeWidth={2} />
             </Link>
             <div className="cta-band__contact">

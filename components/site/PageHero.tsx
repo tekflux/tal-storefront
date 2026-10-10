@@ -7,6 +7,7 @@ export default function PageHero({
   lead,
   image,
   crumbs = [],
+  home = { label: 'Home', href: siteHref('/') },
   children,
 }: {
   eyebrow: string
@@ -14,6 +15,8 @@ export default function PageHero({
   lead?: string
   image: string
   crumbs?: { label: string; href?: string }[]
+  // First breadcrumb; sector subdomains point it at their own home page.
+  home?: { label: string; href: string }
   children?: React.ReactNode
 }) {
   return (
@@ -23,15 +26,17 @@ export default function PageHero({
       </div>
       <div className="wrap">
         <div className="page-hero__inner">
-          <nav className="crumbs" aria-label="Breadcrumb">
-            <Link href={siteHref('/')}>Home</Link>
-            {crumbs.map(c => (
-              <span key={c.label} style={{ display: 'contents' }}>
-                <span aria-hidden>/</span>
-                {c.href ? <Link href={c.href}>{c.label}</Link> : <span>{c.label}</span>}
-              </span>
-            ))}
-          </nav>
+          {crumbs.length > 0 && (
+            <nav className="crumbs" aria-label="Breadcrumb">
+              <Link href={home.href}>{home.label}</Link>
+              {crumbs.map(c => (
+                <span key={c.label} style={{ display: 'contents' }}>
+                  <span aria-hidden>/</span>
+                  {c.href ? <Link href={c.href}>{c.label}</Link> : <span>{c.label}</span>}
+                </span>
+              ))}
+            </nav>
+          )}
           <p className="eyebrow">{eyebrow}</p>
           <h1 className="h1">{title}</h1>
           {lead && <p className="lead">{lead}</p>}
