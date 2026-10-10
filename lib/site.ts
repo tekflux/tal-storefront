@@ -51,6 +51,18 @@ export const credentials = [
   'Full export documentation',
 ]
 
+export type FeaturedProduct = { id: string; name: string; spec: string; image: string; page?: string }
+
+// Shown as the "Featured exports" grid on agro.talcoraexim.com. `page` is the commodity's own page there, where one exists.
+const agroFeatured: FeaturedProduct[] = [
+  { id: 'cocoa', name: 'Cocoa Beans', spec: 'Moisture ≤7% · Fat 55–58%', image: '/img/commodity-cocoa.jpg', page: 'cocoa' },
+  { id: 'cashew', name: 'Cashew Nuts', spec: 'RCN · W180 / W240 / W320', image: '/img/commodity-cashew.jpg' },
+  { id: 'sesame', name: 'Sesame Seeds', spec: 'Purity 99.95% · Oil 50–55%', image: '/img/commodity-sesame.jpg' },
+  { id: 'ginger', name: 'Dried Ginger', spec: 'Gingerol 1.8–2.5% · Moisture ≤12%', image: '/img/commodity-ginger.jpg' },
+  { id: 'hibiscus', name: 'Hibiscus Flower', spec: 'Dried calyces · Hand-sorted', image: '/img/commodity-hibiscus.jpg' },
+  { id: 'soybeans', name: 'Soybeans', spec: 'Non-GMO · Protein 38–42%', image: '/img/commodity-soybeans.jpg' },
+]
+
 export type TradeDirection = 'Export' | 'Import' | 'Import & Export'
 
 export type Sector = {
@@ -68,12 +80,16 @@ export type Sector = {
   faqs: { q: string; a: string }[]
   // Example shown in the quote form's subject field.
   quoteExample: string
+  // Optional photo grid of headline products, shown on the sector's page.
+  featured?: FeaturedProduct[]
   short: string
   direction: TradeDirection
   image: string
   summary: string
   intro: string[]
-  products: { name: string; detail: string }[]
+  products: { name: string; detail: string; image?: string }[]
+  // Two photos for the intro collage on the sector's page: [main, inset].
+  collage: [string, string]
   capabilities: string[]
 }
 
@@ -81,6 +97,8 @@ export const sectors: Sector[] = [
   {
     slug: 'agricultural-commodities',
     subdomain: 'agro',
+    collage: ['/img/cocoa-farm.jpg', '/img/farmer-cocoa.jpg'],
+    featured: agroFeatured,
     brand: 'Talcora Agro',
     quoteExample: 'e.g. 2 × 40ft sesame seeds, CIF Rotterdam',
     audiences: [
@@ -154,6 +172,7 @@ export const sectors: Sector[] = [
   {
     slug: 'food-consumer-goods',
     subdomain: 'foods',
+    collage: ['/img/sectors/foods/collage-main.jpg', '/img/sectors/foods/collage-inset.jpg'],
     brand: 'Talcora Foods',
     quoteExample: 'e.g. Mixed pallet of African flours and spices, delivered London',
     audiences: [
@@ -200,10 +219,10 @@ export const sectors: Sector[] = [
       'Our team manages supplier vetting, labelling compliance, shelf-life planning and consolidated shipping so your stock arrives ready to sell.',
     ],
     products: [
-      { name: 'Staple foods', detail: 'Rice, sugar, flour and edible oils' },
-      { name: 'African specialty foods', detail: 'Flours, spices, dried and packaged goods' },
-      { name: 'Packaged foods & beverages', detail: 'Branded and private-label lines' },
-      { name: 'Household & personal care', detail: 'FMCG for retail and wholesale' },
+      { name: 'Staple foods', detail: 'Rice, sugar, flour and edible oils', image: '/img/sectors/foods/staples.jpg' },
+      { name: 'African specialty foods', detail: 'Flours, spices, dried and packaged goods', image: '/img/sectors/foods/specialty.jpg' },
+      { name: 'Packaged foods & beverages', detail: 'Branded and private-label lines', image: '/img/sectors/foods/packaged.jpg' },
+      { name: 'Household & personal care', detail: 'FMCG for retail and wholesale', image: '/img/sectors/foods/household.jpg' },
     ],
     capabilities: [
       'Wholesale and retail supply programmes',
@@ -215,6 +234,7 @@ export const sectors: Sector[] = [
   {
     slug: 'general-supply',
     subdomain: 'supply',
+    collage: ['/img/sectors/supply/collage-main.jpg', '/img/sectors/supply/collage-inset.jpg'],
     brand: 'Talcora Supply',
     quoteExample: 'e.g. IT equipment and office consumables for a new branch',
     audiences: [
@@ -254,7 +274,7 @@ export const sectors: Sector[] = [
     ],
     short: 'Industrial consumables, packaging, office equipment, parts and hardware from one supplier.',
     direction: 'Import & Export',
-    image: '/img/trucking.jpg',
+    image: '/img/sectors/supply/hero.jpg',
     summary:
       'Everyday goods and consumables for businesses, institutions and contractors, sourced from vetted manufacturers and delivered as one consolidated order.',
     intro: [
@@ -262,12 +282,12 @@ export const sectors: Sector[] = [
       'Orders are consolidated, checked against specification before shipment and delivered with full documentation, so you deal with one supplier and one invoice instead of many.',
     ],
     products: [
-      { name: 'Industrial consumables', detail: 'Lubricants, chemicals, tools and workwear' },
-      { name: 'Packaging materials', detail: 'Bags, cartons, pallets and stretch film' },
-      { name: 'Office & IT equipment', detail: 'Computers, printers, furniture and stationery' },
-      { name: 'Vehicle & machinery parts', detail: 'Tyres, filters, batteries and spares' },
-      { name: 'Hardware & electrical', detail: 'Fixings, cables, lighting and fittings' },
-      { name: 'Anything else on your list', detail: 'Tell us the item and quantity' },
+      { name: 'Industrial consumables', detail: 'Lubricants, chemicals, tools and workwear', image: '/img/sectors/supply/consumables.jpg' },
+      { name: 'Packaging materials', detail: 'Bags, cartons, pallets and stretch film', image: '/img/sectors/supply/packaging.jpg' },
+      { name: 'Office & IT equipment', detail: 'Computers, printers, furniture and stationery', image: '/img/sectors/supply/office.jpg' },
+      { name: 'Vehicle & machinery parts', detail: 'Tyres, filters, batteries and spares', image: '/img/sectors/supply/parts.jpg' },
+      { name: 'Hardware & electrical', detail: 'Fixings, cables, lighting and fittings', image: '/img/sectors/supply/hardware.jpg' },
+      { name: 'Anything else on your list', detail: 'Tell us the item and quantity', image: '/img/sectors/supply/other.jpg' },
     ],
     capabilities: [
       'Sourcing against your item list or tender',
@@ -279,6 +299,7 @@ export const sectors: Sector[] = [
   {
     slug: 'machinery-equipment',
     subdomain: 'machinery',
+    collage: ['/img/sectors/machinery/collage-main.jpg', '/img/sectors/machinery/collage-inset.jpg'],
     brand: 'Talcora Machinery',
     quoteExample: 'e.g. 2 tonne/hour maize milling line, delivered Kano',
     audiences: [
@@ -325,11 +346,11 @@ export const sectors: Sector[] = [
       'We coordinate factory inspections, crating, heavy-lift freight and installation support with the manufacturer, and keep spare-parts supply flowing after delivery.',
     ],
     products: [
-      { name: 'Agro-processing machinery', detail: 'Cleaning, hulling, milling and packing lines' },
-      { name: 'Construction equipment', detail: 'Mixers, compactors and site plant' },
-      { name: 'Material handling', detail: 'Forklifts, racking and conveyors' },
-      { name: 'Generators & power units', detail: 'Diesel and gas gensets' },
-      { name: 'Spare parts', detail: 'OEM and approved equivalents' },
+      { name: 'Agro-processing machinery', detail: 'Cleaning, hulling, milling and packing lines', image: '/img/sectors/machinery/agro.jpg' },
+      { name: 'Construction equipment', detail: 'Mixers, compactors and site plant', image: '/img/sectors/machinery/construction.jpg' },
+      { name: 'Material handling', detail: 'Forklifts, racking and conveyors', image: '/img/sectors/machinery/handling.jpg' },
+      { name: 'Generators & power units', detail: 'Diesel and gas gensets', image: '/img/sectors/machinery/generators.jpg' },
+      { name: 'Spare parts', detail: 'OEM and approved equivalents', image: '/img/sectors/machinery/parts.jpg' },
     ],
     capabilities: [
       'Technical specification and supplier matching',
@@ -341,6 +362,7 @@ export const sectors: Sector[] = [
   {
     slug: 'energy-power',
     subdomain: 'energy',
+    collage: ['/img/sectors/energy/collage-main.jpg', '/img/sectors/energy/collage-inset.jpg'],
     brand: 'Talcora Energy',
     quoteExample: 'e.g. 200 × 550W bifacial panels and 50kWh storage, delivered Lagos',
     audiences: [
@@ -379,7 +401,7 @@ export const sectors: Sector[] = [
     ],
     short: 'Solar, storage and electrical infrastructure equipment.',
     direction: 'Import',
-    image: '/img/energy.jpg',
+    image: '/img/sectors/energy/hero.jpg',
     summary:
       'Solar, storage and electrical equipment for commercial, industrial and off-grid power projects.',
     intro: [
@@ -387,10 +409,10 @@ export const sectors: Sector[] = [
       'Our team verifies certifications and warranties, manages shipping of sensitive equipment and supports documentation for duty and standards compliance.',
     ],
     products: [
-      { name: 'Solar modules', detail: 'Mono PERC and bifacial panels' },
-      { name: 'Inverters & storage', detail: 'Hybrid inverters and lithium batteries' },
-      { name: 'Electrical infrastructure', detail: 'Transformers, cables and switchgear' },
-      { name: 'Mounting & balance of system', detail: 'Structures, combiners and protection' },
+      { name: 'Solar modules', detail: 'Mono PERC and bifacial panels', image: '/img/sectors/energy/solar.jpg' },
+      { name: 'Inverters & storage', detail: 'Hybrid inverters and lithium batteries', image: '/img/sectors/energy/storage.jpg' },
+      { name: 'Electrical infrastructure', detail: 'Transformers, cables and switchgear', image: '/img/sectors/energy/electrical.jpg' },
+      { name: 'Mounting & balance of system', detail: 'Structures, combiners and protection', image: '/img/sectors/energy/mounting.jpg' },
     ],
     capabilities: [
       'Certification and warranty verification',
@@ -402,6 +424,7 @@ export const sectors: Sector[] = [
   {
     slug: 'construction',
     subdomain: 'construction',
+    collage: ['/img/sectors/construction/collage-main.jpg', '/img/sectors/construction/collage-inset.jpg'],
     brand: 'Talcora Construction',
     quoteExample: 'e.g. Rebar, cement and formwork for a 3-storey build, Abuja',
     audiences: [
@@ -440,7 +463,7 @@ export const sectors: Sector[] = [
     ],
     short: 'Project procurement, prefabricated buildings, formwork and civil works supply.',
     direction: 'Import',
-    image: '/img/construction.jpg',
+    image: '/img/sectors/construction/hero.jpg',
     summary:
       'Procurement and site delivery for contractors, developers and infrastructure projects, from a single package to a full bill of quantities.',
     intro: [
@@ -448,12 +471,12 @@ export const sectors: Sector[] = [
       'Orders are phased to your construction programme, inspected before shipment and cleared through customs, so materials reach site when the work needs them.',
     ],
     products: [
-      { name: 'Building materials', detail: 'Steel, cement, tiles and roofing sheets' },
-      { name: 'Prefabricated & modular buildings', detail: 'Site offices, housing units and steel structures' },
-      { name: 'Formwork & scaffolding', detail: 'Steel, aluminium and system formwork' },
-      { name: 'Civil & road works', detail: 'Bitumen, culverts, geotextiles and drainage' },
-      { name: 'MEP packages', detail: 'Mechanical, electrical and plumbing supply' },
-      { name: 'Site safety & PPE', detail: 'Helmets, harnesses, barriers and signage' },
+      { name: 'Building materials', detail: 'Steel, cement, tiles and roofing sheets', image: '/img/sectors/construction/materials.jpg' },
+      { name: 'Prefabricated & modular buildings', detail: 'Site offices, housing units and steel structures', image: '/img/sectors/construction/prefab.jpg' },
+      { name: 'Formwork & scaffolding', detail: 'Steel, aluminium and system formwork', image: '/img/sectors/construction/formwork.jpg' },
+      { name: 'Civil & road works', detail: 'Bitumen, culverts, geotextiles and drainage', image: '/img/sectors/construction/civil.jpg' },
+      { name: 'MEP packages', detail: 'Mechanical, electrical and plumbing supply', image: '/img/sectors/construction/mep.jpg' },
+      { name: 'Site safety & PPE', detail: 'Helmets, harnesses, barriers and signage', image: '/img/sectors/construction/ppe.jpg' },
     ],
     capabilities: [
       'Bill-of-quantities procurement',
@@ -607,15 +630,6 @@ export const regions = [
   },
 ]
 
-// `page` is the commodity's page on the agro subdomain, where one exists.
-export const commodities: { id: string; name: string; spec: string; image: string; page?: string }[] = [
-  { id: 'cocoa', name: 'Cocoa Beans', spec: 'Moisture ≤7% · Fat 55–58%', image: '/img/commodity-cocoa.jpg', page: 'cocoa' },
-  { id: 'cashew', name: 'Cashew Nuts', spec: 'RCN · W180 / W240 / W320', image: '/img/commodity-cashew.jpg' },
-  { id: 'sesame', name: 'Sesame Seeds', spec: 'Purity 99.95% · Oil 50–55%', image: '/img/commodity-sesame.jpg' },
-  { id: 'ginger', name: 'Dried Ginger', spec: 'Gingerol 1.8–2.5% · Moisture ≤12%', image: '/img/commodity-ginger.jpg' },
-  { id: 'hibiscus', name: 'Hibiscus Flower', spec: 'Dried calyces · Hand-sorted', image: '/img/commodity-hibiscus.jpg' },
-  { id: 'soybeans', name: 'Soybeans', spec: 'Non-GMO · Protein 38–42%', image: '/img/commodity-soybeans.jpg' },
-]
 
 export const values = [
   {

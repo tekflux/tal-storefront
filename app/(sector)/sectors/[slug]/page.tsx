@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import PageHero from '@/components/site/PageHero'
 import ContactForm from '@/components/site/ContactForm'
 import Icon from '@/components/site/Icon'
-import { company, getSector, sectorHref, sectorOrigin, sectors } from '@/lib/site'
+import { company, getSector, sectorHref, sectorOrigin, sectors, type FeaturedProduct } from '@/lib/site'
 import { PRODUCTS } from '@/lib/agrocomm'
 
 type Params = { slug: string }
@@ -39,6 +38,30 @@ const detailPages: Record<string, string> = Object.fromEntries(
   PRODUCTS.map(p => [p.name.toLowerCase(), p.id])
 )
 
+function ProductCard({ item, href, delay }: { item: FeaturedProduct; href?: string; delay: number }) {
+  const body = (
+    <>
+      <div className="commodity__img">
+        <img src={item.image} alt={item.name} loading="lazy" />
+      </div>
+      <div className="commodity__body">
+        <h3 className="commodity__name">{item.name}</h3>
+        <p className="commodity__spec">{item.spec}</p>
+      </div>
+    </>
+  )
+  const style = { ['--delay' as string]: `${delay}s` }
+  return href ? (
+    <Link href={href} className="commodity reveal" style={style}>
+      {body}
+    </Link>
+  ) : (
+    <div className="commodity reveal" style={style}>
+      {body}
+    </div>
+  )
+}
+
 // Everything on this page is about one sector; it is served as that sector's subdomain home.
 export default async function SectorPage({ params }: { params: Promise<Params> }) {
   const sector = getSector((await params).slug)
@@ -54,58 +77,152 @@ export default async function SectorPage({ params }: { params: Promise<Params> }
     })),
   }
 
+  // Sectors with a photo for every product show cards; agro shows its featured grid plus the full list.
+  const productCards = sector.products.every(p => p.image)
+    ? sector.products.map(p => ({ id: p.name, name: p.name, spec: p.detail, image: p.image! }))
+    : null
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      <PageHero eyebrow={sector.brand} title={sector.name} lead={sector.summary} image={sector.image} />
+      {/* ---------- Hero ---------- */}
+      <section className="hero hero--sector on-dark">
+        <div className="hero__media">
+          <img src={sector.image} alt="" fetchPriority="high" />
+        </div>
+        <div className="wrap">
+          <div className="hero__content">
+            <p className="eyebrow">{sector.brand}</p>
+            <h1 className="display">{sector.name}</h1>
+            <p className="hero__lead">{sector.summary}</p>
+            <div className="hero__ctas">
+              <a href="#quote" className="btn btn--primary">
+                Request a quote <Icon name="arrow" size={18} strokeWidth={2} />
+              </a>
+              <a href="#products" className="btn btn--ghost">
+                View products
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="hero__stats">
+          <div className="wrap">
+            <ul className="hero-points" aria-label="Products">
+              {sector.products.slice(0, 4).map(p => (
+                <li key={p.name}>
+                  <span>{p.name}</span>
+                  {p.detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
 
-      {/* ---------- Products ---------- */}
-      <section className="section" id="products">
-        <div className="wrap sector-layout">
-          <div>
-            <div className="prose reveal" style={{ fontSize: 17 }}>
+      {/* ---------- Intro ---------- */}
+      <section className="section">
+        <div className="wrap split">
+          <div className="reveal">
+            <p className="eyebrow">About {sector.brand}</p>
+            <h2 className="h2">
+              Sourced, inspected <em>and delivered.</em>
+            </h2>
+            <div className="prose" style={{ marginTop: 24, fontSize: 17 }}>
               {sector.intro.map(p => (
                 <p key={p}>{p}</p>
               ))}
             </div>
-
-            <h2 className="h3 reveal" style={{ margin: '48px 0 20px', color: 'var(--ink)' }}>
-              Products we supply
-            </h2>
-            <div className="product-table reveal">
-              {sector.products.map(p => (
-                <div className="product-row" key={p.name}>
-                  <div className="product-row__name">{p.name}</div>
-                  <div className="product-row__detail">
-                    {p.detail}
-                    {detailPages[p.name.toLowerCase()] && (
-                      <Link href={sectorHref(sector, detailPages[p.name.toLowerCase()])}>View process →</Link>
-                    )}
-                  </div>
-                </div>
+            <ul className="checklist">
+              {sector.capabilities.map(c => (
+                <li key={c}>
+                  <span className="checklist__dot">
+                    <Icon name="check" size={14} strokeWidth={2.6} />
+                  </span>
+                  {c}
+                </li>
               ))}
+            </ul>
+            <a href="#quote" className="link-arrow">
+              Talk to {sector.brand} <Icon name="arrow" size={16} strokeWidth={2} />
+            </a>
+          </div>
+          <div className="collage reveal" style={{ ['--delay' as string]: '0.12s' }}>
+            <div className="collage__main">
+              <img src={sector.collage[0]} alt="" loading="lazy" />
+            </div>
+            <div className="collage__inset">
+              <img src={sector.collage[1]} alt="" loading="lazy" />
+            </div>
+            <div className="collage__badge">
+              <strong>{sector.products.length}</strong>
+              <span>product lines from vetted suppliers</span>
             </div>
           </div>
+        </div>
+      </section>
 
-          <aside className="sticky stack reveal" style={{ ['--delay' as string]: '0.1s' }}>
-            <div className="panel panel--ink on-dark">
-              <p className="eyebrow">What we handle</p>
-              <ul className="checklist" style={{ margin: '0 0 28px' }}>
-                {sector.capabilities.map(c => (
-                  <li key={c}>
-                    <span className="checklist__dot">
-                      <Icon name="check" size={14} strokeWidth={2.6} />
-                    </span>
-                    {c}
-                  </li>
-                ))}
-              </ul>
-              <a href="#quote" className="btn btn--primary" style={{ width: '100%' }}>
-                Request a quote <Icon name="arrow" size={18} strokeWidth={2} />
-              </a>
+      {/* ---------- Products ---------- */}
+      <section className="section section--sand" id="products">
+        <div className="wrap">
+          <div className="section-head reveal">
+            <div>
+              <p className="eyebrow">{sector.featured ? 'Featured exports' : 'Products'}</p>
+              <h2 className="h2">
+                {sector.featured ? (
+                  <>
+                    West African commodities, <em>graded to spec.</em>
+                  </>
+                ) : (
+                  <>
+                    What we <em>supply.</em>
+                  </>
+                )}
+              </h2>
             </div>
-          </aside>
+            <p className="lead">
+              {sector.featured
+                ? 'Cleaned, dried, graded and independently inspected at origin, then packed for the long haul.'
+                : 'Every order is checked against your specification before it ships. Ask for the grade, brand or model you need.'}
+            </p>
+          </div>
+
+          {sector.featured && (
+            <div className="commodity-grid">
+              {sector.featured.map((c, i) => (
+                <ProductCard key={c.id} item={c} href={c.page ? sectorHref(sector, c.page) : undefined} delay={i * 0.06} />
+              ))}
+            </div>
+          )}
+
+          {productCards && (
+            <div className={`commodity-grid commodity-grid--wide${productCards.length === 4 ? ' commodity-grid--four' : ''}`}>
+              {productCards.map((c, i) => (
+                <ProductCard key={c.id} item={c} delay={(i % 3) * 0.08} />
+              ))}
+            </div>
+          )}
+
+          {!productCards && (
+            <>
+              <h3 className="h3 reveal" style={{ margin: '64px 0 20px', color: 'var(--ink)' }}>
+                Full commodity list
+              </h3>
+              <div className="product-table reveal">
+                {sector.products.map(p => (
+                  <div className="product-row" key={p.name}>
+                    <div className="product-row__name">{p.name}</div>
+                    <div className="product-row__detail">
+                      {p.detail}
+                      {detailPages[p.name.toLowerCase()] && (
+                        <Link href={sectorHref(sector, detailPages[p.name.toLowerCase()])}>View process →</Link>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 

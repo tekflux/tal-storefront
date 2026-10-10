@@ -2469,3 +2469,109 @@ a {
 section[id] {
   scroll-margin-top: 80px;
 }
+
+/* Sector home hero: a little shorter than the corporate one, with the product lines along the bottom. */
+.hero--sector {
+  min-height: clamp(640px, 92svh, 980px);
+}
+
+.hero-points {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-points li {
+  padding: 24px 24px 24px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--on-dark-muted);
+}
+
+.hero-points li + li {
+  padding-left: 24px;
+  border-left: 1px solid var(--line-dark);
+}
+
+.hero-points span {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--white);
+}
+
+@media (max-width: 760px) {
+  .hero-points {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hero-points li,
+  .hero-points li + li {
+    padding: 16px 12px 16px 0;
+    border-left: 0;
+  }
+  .hero-points li:nth-child(even) {
+    padding-left: 16px;
+    border-left: 1px solid var(--line-dark);
+  }
+  .hero-points li:nth-child(n + 3) {
+    border-top: 1px solid var(--line-dark);
+  }
+}
+
+/* Larger product cards (3 across, landscape photos) for sectors without a featured grid. */
+.commodity-grid--wide {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.commodity-grid--wide .commodity__img {
+  aspect-ratio: 4 / 3;
+}
+
+.commodity-grid--wide .commodity__body {
+  padding: 22px 24px 26px;
+}
+
+.commodity-grid--wide .commodity__name {
+  font-size: 22px;
+}
+
+.commodity-grid--wide .commodity__spec {
+  font-size: 14.5px;
+}
+
+@media (max-width: 900px) {
+  .commodity-grid--wide {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .commodity-grid--wide {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Four products fit one row instead of leaving a single card on the second. */
+@media (min-width: 1101px) {
+  .commodity-grid--four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Long eyebrows (e.g. the homepage's sector list) wrap on phones instead of running off-screen. */
+.eyebrow {
+  max-width: 100%;
+}
+
+/* Keep longer brand names such as "Talcora Construction" on one line in the phone header. */
+@media (max-width: 560px) {
+  .site-header .logo__name {
+    font-size: 21px;
+    white-space: nowrap;
+  }
+}
