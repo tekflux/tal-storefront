@@ -105,7 +105,7 @@ export default function HomePage() {
               <img src="/img/warehouse.jpg" alt="Warehouse team preparing palletised goods for export" loading="lazy" />
             </div>
             <div className="collage__inset">
-              <img src="/img/farmer-cocoa.jpg" alt="Cocoa farmer holding freshly harvested pods" loading="lazy" />
+              <img src="/img/meeting.jpg" alt="Talcora trade team meeting with partners" loading="lazy" />
             </div>
             <div className="collage__badge">
               <strong>2</strong>
