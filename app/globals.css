@@ -2569,6 +2569,17 @@ section[id] {
 }
 
 /* Division lockup: Talcora | ENERGY */
+.logo__mark {
+  display: inline-flex;
+}
+
+.logo__text {
+  display: inline-flex;
+  align-items: center;
+  gap: inherit;
+  color: inherit;
+}
+
 .logo--division .logo__name {
   font-size: 23px;
 }
