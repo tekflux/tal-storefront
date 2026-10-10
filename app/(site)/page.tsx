@@ -139,11 +139,12 @@ export default function HomePage() {
                 style={{ ['--delay' as string]: `${(i % 3) * 0.08}s` }}
               >
                 <img src={s.image} alt="" loading="lazy" />
+                <span className="sector-card__index">{String(i + 1).padStart(2, '0')}</span>
+                <span className="sector-card__go" aria-hidden="true">
+                  <Icon name="arrow" size={16} strokeWidth={2} />
+                </span>
                 <h3 className="sector-card__title">{s.name}</h3>
                 <p className="sector-card__text">{s.short}</p>
-                <span className="sector-card__more">
-                  Explore sector <Icon name="arrow" size={16} strokeWidth={2} />
-                </span>
               </Link>
             ))}
           </div>

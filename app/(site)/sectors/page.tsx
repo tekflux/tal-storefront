@@ -38,12 +38,13 @@ export default function SectorsPage() {
                 style={{ ['--delay' as string]: `${(i % 3) * 0.08}s` }}
               >
                 <img src={s.image} alt="" loading="lazy" />
+                <span className="sector-card__index">{String(i + 1).padStart(2, '0')}</span>
+                <span className="sector-card__go" aria-hidden="true">
+                  <Icon name="arrow" size={16} strokeWidth={2} />
+                </span>
                 <h2 className="sector-card__title">{s.name}</h2>
                 {/* `summary` is the lead on the sector's own subdomain; use the short line here so it isn't duplicated. */}
                 <p className="sector-card__text">{s.short}</p>
-                <span className="sector-card__more">
-                  Explore sector <Icon name="arrow" size={16} strokeWidth={2} />
-                </span>
               </Link>
             ))}
           </div>
