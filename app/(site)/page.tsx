@@ -139,7 +139,6 @@ export default function HomePage() {
                 style={{ ['--delay' as string]: `${(i % 3) * 0.08}s` }}
               >
                 <img src={s.image} alt="" loading="lazy" />
-                <span className="sector-card__index">{String(i + 1).padStart(2, '0')}</span>
                 <span className="sector-card__go" aria-hidden="true">
                   <Icon name="arrow" size={16} strokeWidth={2} />
                 </span>
@@ -236,7 +235,11 @@ export default function HomePage() {
                 <img src={r.image} alt="" loading="lazy" />
                 <span className="region__role">{r.role}</span>
                 <h3 className="region__name">{r.name}</h3>
-                <p className="region__places">{r.places.join(' · ')}</p>
+                <p className="region__places">
+                  {r.places.map(place => (
+                    <span key={place}>{place}</span>
+                  ))}
+                </p>
               </div>
             ))}
           </div>
@@ -251,12 +254,16 @@ export default function HomePage() {
             <h2 className="h2" style={{ marginBottom: 40 }}>
               Built on trust, <em>proven in every shipment.</em>
             </h2>
-            <div className="values">
-              {values.map((v, i) => (
+            <div className="values values--icons">
+              {values.map(v => (
                 <div className="value" key={v.title}>
-                  <div className="value__num">0{i + 1}</div>
-                  <h3 className="value__title">{v.title}</h3>
-                  <p className="value__text">{v.body}</p>
+                  <span className="value__icon">
+                    <Icon name={v.icon} size={20} strokeWidth={1.8} />
+                  </span>
+                  <div>
+                    <h3 className="value__title">{v.title}</h3>
+                    <p className="value__text">{v.body}</p>
+                  </div>
                 </div>
               ))}
             </div>

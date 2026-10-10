@@ -634,18 +634,22 @@ export const regions = [
 export const values = [
   {
     title: 'Integrity in every contract',
+    icon: 'document' as const,
     body: 'Clear specifications, honest quotations and written terms. What we agree is what we deliver.',
   },
   {
     title: 'Quality verified, not promised',
+    icon: 'inspect' as const,
     body: 'Independent inspection before shipment, with reports and certificates shared with you.',
   },
   {
     title: 'Two continents, one team',
+    icon: 'pin' as const,
     body: 'Offices in London and Kano give you a partner on the ground at origin and in your market.',
   },
   {
     title: 'Long-term relationships',
+    icon: 'chat' as const,
     body: 'Dedicated account support and consistent supply, built for repeat trade rather than one-off deals.',
   },
 ]

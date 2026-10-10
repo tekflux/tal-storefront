@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Fragment } from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import ContactForm from '@/components/site/ContactForm'
@@ -94,7 +95,15 @@ export default async function SectorPage({ params }: { params: Promise<Params> }
         <div className="wrap">
           <div className="hero__content">
             <p className="eyebrow">{sector.brand}</p>
-            <h1 className="display">{sector.name}</h1>
+            {/* The ampersand in "Food & Consumer Goods" is set in brass italic as an accent. */}
+            <h1 className="display hero__title--sector">
+              {sector.name.split(' & ').map((part, i) => (
+                <Fragment key={part}>
+                  {i > 0 && <em> &amp; </em>}
+                  {part}
+                </Fragment>
+              ))}
+            </h1>
             <p className="hero__lead">{sector.summary}</p>
             <div className="hero__ctas">
               <a href="#quote" className="btn btn--primary">

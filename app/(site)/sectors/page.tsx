@@ -38,7 +38,6 @@ export default function SectorsPage() {
                 style={{ ['--delay' as string]: `${(i % 3) * 0.08}s` }}
               >
                 <img src={s.image} alt="" loading="lazy" />
-                <span className="sector-card__index">{String(i + 1).padStart(2, '0')}</span>
                 <span className="sector-card__go" aria-hidden="true">
                   <Icon name="arrow" size={16} strokeWidth={2} />
                 </span>
