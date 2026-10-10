@@ -8,7 +8,7 @@ import { company, regions, values } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Talcora is an international import and export company with offices in London and Kano, connecting producers and manufacturers with buyers worldwide.',
+    'Talcora is a trading company with offices in London and Kano, exporting West African agricultural commodities and supplying energy, construction and industrial goods.',
   alternates: { canonical: '/about' },
 }
 
@@ -47,7 +47,7 @@ export default function AboutPage() {
               </p>
               <p>
                 Today we export West African agricultural commodities to buyers in Europe, Asia, the Middle East and
-                North America, and import building materials, machinery, energy equipment, healthcare supplies and
+                North America, and import building materials, machinery, energy equipment, construction supplies and
                 consumer goods for growing businesses.
               </p>
             </div>

@@ -1,15 +1,17 @@
 // Single source of truth for Talcora brand content.
 // Update company details, sectors, services and markets here.
 
+import { onLiveSite } from './env'
+
 export const company = {
   name: 'Talcora',
   legalName: 'Talcora',
   domain: 'talcoraexim.com',
   url: 'https://talcoraexim.com',
   email: 'info@talcoraexim.com',
-  tagline: 'Global import & export, done properly.',
+  tagline: 'Agro export, energy, construction and industrial supply.',
   description:
-    'Talcora is an international import and export company sourcing, inspecting and delivering quality goods between Africa, Europe, the Middle East, Asia and the Americas.',
+    'Talcora exports West African agricultural commodities and supplies energy, construction, building materials, machinery and food products to businesses across Africa, Europe, the Middle East and Asia.',
   offices: [
     {
       id: 'uk',
@@ -53,7 +55,13 @@ export type TradeDirection = 'Export' | 'Import' | 'Import & Export'
 
 export type Sector = {
   slug: string
+  // Each sector is served on its own subdomain, e.g. energy.talcoraexim.com.
+  subdomain: string
   name: string
+  // Title and description shown in Google results for the sector's subdomain.
+  seoTitle: string
+  seoDescription: string
+  keywords: string[]
   short: string
   direction: TradeDirection
   image: string
@@ -66,7 +74,21 @@ export type Sector = {
 export const sectors: Sector[] = [
   {
     slug: 'agricultural-commodities',
+    subdomain: 'agro',
     name: 'Agricultural Commodities',
+    seoTitle: 'Cocoa, Cashew, Sesame & Ginger Exporter from Nigeria | Talcora Agro',
+    seoDescription:
+      'Export-grade cocoa beans, cashew nuts, sesame seeds, dried ginger, hibiscus, soybeans and shea from Nigeria and West Africa. Inspected at origin, shipped FOB, CFR or CIF.',
+    keywords: [
+      'cocoa beans exporter Nigeria',
+      'cashew nut supplier',
+      'sesame seed exporter',
+      'dried split ginger exporter',
+      'hibiscus flower supplier',
+      'soybean exporter Nigeria',
+      'shea butter supplier',
+      'agro commodity export West Africa',
+    ],
     short: 'Cocoa, cashew, sesame, ginger, hibiscus, soybeans and shea, sourced at origin.',
     direction: 'Export',
     image: '/img/agro.jpg',
@@ -96,7 +118,18 @@ export const sectors: Sector[] = [
   },
   {
     slug: 'food-consumer-goods',
+    subdomain: 'foods',
     name: 'Food & Consumer Goods',
+    seoTitle: 'African Food Products & Staple Foods Wholesale Supplier | Talcora Foods',
+    seoDescription:
+      'Wholesale African food products, staple foods and FMCG for retailers, distributors and online grocers in the UK, Europe and West Africa. Vetted suppliers, compliant labelling.',
+    keywords: [
+      'African food wholesale supplier UK',
+      'African food products distributor',
+      'staple foods supplier Nigeria',
+      'rice sugar flour edible oil importer',
+      'FMCG import West Africa',
+    ],
     short: 'Staple foods, packaged goods and authentic African food products.',
     direction: 'Import & Export',
     image: '/img/food-market.jpg',
@@ -121,7 +154,18 @@ export const sectors: Sector[] = [
   },
   {
     slug: 'building-materials',
+    subdomain: 'materials',
     name: 'Industrial & Building Materials',
+    seoTitle: 'Steel, Cement, Tiles & Roofing Sheets Supplier | Talcora Materials',
+    seoDescription:
+      'Rebar, steel sections, cement, tiles, sanitaryware, roofing sheets and fittings sourced from vetted manufacturers and delivered to your project on schedule.',
+    keywords: [
+      'building materials supplier Nigeria',
+      'steel rebar supplier',
+      'cement supplier',
+      'roofing sheets supplier',
+      'tiles and sanitaryware importer',
+    ],
     short: 'Steel, cement, tiles, roofing, fittings and hardware for projects.',
     direction: 'Import',
     image: '/img/trucking.jpg',
@@ -147,7 +191,18 @@ export const sectors: Sector[] = [
   },
   {
     slug: 'machinery-equipment',
+    subdomain: 'machinery',
     name: 'Machinery & Equipment',
+    seoTitle: 'Agro-Processing Machinery, Generators & Forklifts Supplier | Talcora',
+    seoDescription:
+      'Agro-processing lines, construction plant, forklifts, generators and spare parts sourced from vetted manufacturers, with factory inspection, freight and after-sales support.',
+    keywords: [
+      'agro processing machinery supplier',
+      'generator supplier Nigeria',
+      'forklift supplier',
+      'construction equipment importer',
+      'machinery spare parts supplier',
+    ],
     short: 'Agro-processing, construction and material-handling equipment.',
     direction: 'Import',
     image: '/img/warehouse.jpg',
@@ -173,7 +228,18 @@ export const sectors: Sector[] = [
   },
   {
     slug: 'energy-power',
+    subdomain: 'energy',
     name: 'Energy & Power Solutions',
+    seoTitle: 'Solar Panels, Inverters & Lithium Batteries Supplier | Talcora Energy',
+    seoDescription:
+      'Tier-one solar panels, hybrid inverters, lithium batteries, transformers and cables for installers, developers and businesses. Certified equipment, shipped to site.',
+    keywords: [
+      'solar panel supplier Nigeria',
+      'solar inverter supplier',
+      'lithium battery supplier',
+      'solar equipment importer Africa',
+      'transformer and cable supplier',
+    ],
     short: 'Solar, storage and electrical infrastructure equipment.',
     direction: 'Import',
     image: '/img/energy.jpg',
@@ -197,33 +263,64 @@ export const sectors: Sector[] = [
     ],
   },
   {
-    slug: 'healthcare-supplies',
-    name: 'Healthcare & Laboratory Supplies',
-    short: 'Medical consumables and laboratory equipment from licensed makers.',
+    slug: 'construction',
+    subdomain: 'construction',
+    name: 'Construction & Infrastructure',
+    seoTitle: 'Construction Project Procurement & Site Supply | Talcora Construction',
+    seoDescription:
+      'Procurement and delivery for construction and infrastructure projects: prefabricated buildings, formwork, scaffolding, civil works materials and MEP packages, phased to your programme.',
+    keywords: [
+      'construction procurement company',
+      'construction materials supplier Nigeria',
+      'prefabricated buildings supplier',
+      'scaffolding and formwork supplier',
+      'infrastructure project supply',
+    ],
+    short: 'Project procurement, prefabricated buildings, formwork and civil works supply.',
     direction: 'Import',
-    image: '/img/quality-lab.jpg',
+    image: '/img/construction.jpg',
     summary:
-      'Medical consumables, laboratory equipment and health products from licensed manufacturers.',
+      'Procurement and site delivery for contractors, developers and infrastructure projects, from a single package to a full bill of quantities.',
     intro: [
-      'We source medical consumables, diagnostic and laboratory equipment from licensed manufacturers for hospitals, clinics, laboratories and distributors.',
-      'Product registration documents, batch traceability and appropriate storage in transit are planned from the outset.',
+      'We act as the procurement arm for contractors and developers, sourcing everything a project needs from vetted manufacturers and consolidating it into scheduled deliveries.',
+      'Orders are phased to your construction programme, inspected before shipment and cleared through customs, so materials reach site when the work needs them.',
     ],
     products: [
-      { name: 'Medical consumables', detail: 'Gloves, syringes, dressings and PPE' },
-      { name: 'Laboratory equipment', detail: 'Analysers, glassware and reagents' },
-      { name: 'Hospital equipment', detail: 'Beds, monitors and furniture' },
+      { name: 'Prefabricated & modular buildings', detail: 'Site offices, housing units and steel structures' },
+      { name: 'Formwork & scaffolding', detail: 'Steel, aluminium and system formwork' },
+      { name: 'Civil & road works', detail: 'Bitumen, culverts, geotextiles and drainage' },
+      { name: 'MEP packages', detail: 'Mechanical, electrical and plumbing supply' },
+      { name: 'Site safety & PPE', detail: 'Helmets, harnesses, barriers and signage' },
     ],
     capabilities: [
-      'Licensed-manufacturer sourcing',
-      'Registration document support',
-      'Batch and expiry traceability',
-      'Temperature-aware logistics',
+      'Bill-of-quantities procurement',
+      'Deliveries phased to the project programme',
+      'Pre-shipment inspection and conformity',
+      'Customs clearance and delivery to site',
     ],
   },
 ]
 
 export function getSector(slug: string) {
   return sectors.find(s => s.slug === slug)
+}
+
+// Sector pages live on subdomains on the live site (energy.talcoraexim.com).
+// In development they stay on localhost under /sectors/<slug>.
+
+export function sectorOrigin(sector: Sector) {
+  return `https://${sector.subdomain}.${company.domain}`
+}
+
+/** Link to a sector's home page, or to a page inside it (e.g. 'cocoa'). */
+export function sectorHref(sector: Sector, page?: string) {
+  if (onLiveSite) return page ? `${sectorOrigin(sector)}/${page}` : sectorOrigin(sector)
+  return page ? `/sectors/${sector.slug}/${page}` : `/sectors/${sector.slug}`
+}
+
+/** Link to a page on the corporate site. Absolute on the live site so it also works from subdomains. */
+export function siteHref(path: string) {
+  return onLiveSite ? `${company.url}${path}` : path
 }
 
 export type ServiceIcon =
@@ -347,8 +444,9 @@ export const regions = [
   },
 ]
 
-export const commodities: { id: string; name: string; spec: string; image: string; href?: string }[] = [
-  { id: 'cocoa', name: 'Cocoa Beans', spec: 'Moisture ≤7% · Fat 55–58%', image: '/img/commodity-cocoa.jpg', href: '/sectors/agricultural-commodities/cocoa' },
+// `page` is the commodity's page on the agro subdomain, where one exists.
+export const commodities: { id: string; name: string; spec: string; image: string; page?: string }[] = [
+  { id: 'cocoa', name: 'Cocoa Beans', spec: 'Moisture ≤7% · Fat 55–58%', image: '/img/commodity-cocoa.jpg', page: 'cocoa' },
   { id: 'cashew', name: 'Cashew Nuts', spec: 'RCN · W180 / W240 / W320', image: '/img/commodity-cashew.jpg' },
   { id: 'sesame', name: 'Sesame Seeds', spec: 'Purity 99.95% · Oil 50–55%', image: '/img/commodity-sesame.jpg' },
   { id: 'ginger', name: 'Dried Ginger', spec: 'Gingerol 1.8–2.5% · Moisture ≤12%', image: '/img/commodity-ginger.jpg' },
@@ -380,7 +478,7 @@ export const navigation = [
   {
     label: 'What We Trade',
     href: '/sectors',
-    children: sectors.map(s => ({ label: s.name, href: `/sectors/${s.slug}` })),
+    children: sectors.map(s => ({ label: s.name, href: sectorHref(s) })),
   },
   { label: 'Services', href: '/services' },
   { label: 'Insights', href: '/insights' },

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { siteHref } from '@/lib/site'
 
 export default function PageHero({
   eyebrow,
@@ -23,7 +24,7 @@ export default function PageHero({
       <div className="wrap">
         <div className="page-hero__inner">
           <nav className="crumbs" aria-label="Breadcrumb">
-            <Link href="/">Home</Link>
+            <Link href={siteHref('/')}>Home</Link>
             {crumbs.map(c => (
               <span key={c.label} style={{ display: 'contents' }}>
                 <span aria-hidden>/</span>

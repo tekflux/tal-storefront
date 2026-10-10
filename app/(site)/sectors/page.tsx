@@ -3,12 +3,12 @@ import Link from 'next/link'
 import PageHero from '@/components/site/PageHero'
 import CtaBand from '@/components/site/CtaBand'
 import Icon from '@/components/site/Icon'
-import { sectors } from '@/lib/site'
+import { sectorHref, sectors } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'What We Trade',
   description:
-    'Agricultural commodities, food and consumer goods, building materials, machinery, energy equipment and healthcare supplies: the sectors Talcora trades in.',
+    'Agricultural commodities, food and consumer goods, building materials, machinery, energy and construction: the sectors Talcora trades in.',
   alternates: { canonical: '/sectors' },
 }
 
@@ -32,7 +32,7 @@ export default function SectorsPage() {
           <div className="sector-grid">
             {sectors.map((s, i) => (
               <Link
-                href={`/sectors/${s.slug}`}
+                href={sectorHref(s)}
                 className="sector-card reveal"
                 key={s.slug}
                 style={{ ['--delay' as string]: `${(i % 3) * 0.08}s` }}

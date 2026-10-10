@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Logo from './Logo'
-import { company, sectors } from '@/lib/site'
+import { company, sectorHref, sectors, siteHref } from '@/lib/site'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -22,11 +22,11 @@ export default function Footer() {
           <div>
             <h4>Company</h4>
             <ul>
-              <li><Link href="/about">About us</Link></li>
-              <li><Link href="/services">Services</Link></li>
-              <li><Link href="/insights">Insights</Link></li>
-              <li><Link href="/careers">Careers</Link></li>
-              <li><Link href="/contact">Contact</Link></li>
+              <li><Link href={siteHref('/about')}>About us</Link></li>
+              <li><Link href={siteHref('/services')}>Services</Link></li>
+              <li><Link href={siteHref('/insights')}>Insights</Link></li>
+              <li><Link href={siteHref('/careers')}>Careers</Link></li>
+              <li><Link href={siteHref('/contact')}>Contact</Link></li>
               {company.socials.map(s => (
                 <li key={s.href}>
                   <a href={s.href} target="_blank" rel="noopener noreferrer">{s.label}</a>
@@ -40,7 +40,7 @@ export default function Footer() {
             <ul>
               {sectors.map(s => (
                 <li key={s.slug}>
-                  <Link href={`/sectors/${s.slug}`}>{s.name}</Link>
+                  <Link href={sectorHref(s)}>{s.name}</Link>
                 </li>
               ))}
             </ul>

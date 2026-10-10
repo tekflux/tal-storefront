@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import PageHero from '@/components/site/PageHero'
 import CtaBand from '@/components/site/CtaBand'
 import Icon from '@/components/site/Icon'
-import { getSector, sectors } from '@/lib/site'
+import { getSector, sectorHref, sectorOrigin, sectors, siteHref } from '@/lib/site'
 import { PRODUCTS } from '@/lib/agrocomm'
 
 type Params = { slug: string }
@@ -18,16 +18,19 @@ export function generateStaticParams(): Params[] {
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const sector = getSector((await params).slug)
   if (!sector) return {}
+  const url = sectorOrigin(sector)
   return {
-    title: sector.name,
-    description: sector.summary,
-    alternates: { canonical: `/sectors/${sector.slug}` },
+    title: { absolute: sector.seoTitle },
+    description: sector.seoDescription,
+    keywords: sector.keywords,
+    alternates: { canonical: url },
+    openGraph: { title: sector.seoTitle, description: sector.seoDescription, url, images: [sector.image] },
   }
 }
 
 // Commodity names in the sector list that have their own detail page.
 const detailPages: Record<string, string> = Object.fromEntries(
-  PRODUCTS.map(p => [p.name.toLowerCase(), `/sectors/agricultural-commodities/${p.id}`])
+  PRODUCTS.map(p => [p.name.toLowerCase(), p.id])
 )
 
 export default async function SectorPage({ params }: { params: Promise<Params> }) {
@@ -43,7 +46,7 @@ export default async function SectorPage({ params }: { params: Promise<Params> }
         title={sector.name}
         lead={sector.summary}
         image={sector.image}
-        crumbs={[{ label: 'What We Trade', href: '/sectors' }, { label: sector.name }]}
+        crumbs={[{ label: 'What We Trade', href: siteHref('/sectors') }, { label: sector.name }]}
       />
 
       <section className="section">
@@ -65,7 +68,7 @@ export default async function SectorPage({ params }: { params: Promise<Params> }
                   <div className="product-row__detail">
                     {p.detail}
                     {detailPages[p.name.toLowerCase()] && (
-                      <Link href={detailPages[p.name.toLowerCase()]}>View process →</Link>
+                      <Link href={sectorHref(sector, detailPages[p.name.toLowerCase()])}>View process →</Link>
                     )}
                   </div>
                 </div>
@@ -86,7 +89,7 @@ export default async function SectorPage({ params }: { params: Promise<Params> }
                   </li>
                 ))}
               </ul>
-              <Link href="/contact" className="btn btn--primary" style={{ width: '100%' }}>
+              <Link href={siteHref('/contact')} className="btn btn--primary" style={{ width: '100%' }}>
                 Request a quote <Icon name="arrow" size={18} strokeWidth={2} />
               </Link>
             </div>
@@ -110,14 +113,14 @@ export default async function SectorPage({ params }: { params: Promise<Params> }
               </h2>
             </div>
             <div>
-              <Link href="/sectors" className="link-arrow">
+              <Link href={siteHref('/sectors')} className="link-arrow">
                 All sectors <Icon name="arrow" size={16} strokeWidth={2} />
               </Link>
             </div>
           </div>
           <div className="sector-grid">
             {others.map(s => (
-              <Link href={`/sectors/${s.slug}`} className="sector-card reveal" key={s.slug} style={{ minHeight: 360 }}>
+              <Link href={sectorHref(s)} className="sector-card reveal" key={s.slug} style={{ minHeight: 360 }}>
                 <img src={s.image} alt="" loading="lazy" />
                 <h3 className="sector-card__title">{s.name}</h3>
                 <p className="sector-card__text">{s.short}</p>

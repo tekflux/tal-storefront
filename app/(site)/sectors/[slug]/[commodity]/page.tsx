@@ -5,10 +5,12 @@ import PageHero from '@/components/site/PageHero'
 import CtaBand from '@/components/site/CtaBand'
 import Icon from '@/components/site/Icon'
 import { getProduct, PRODUCTS } from '@/lib/agrocomm'
+import { getSector, sectorHref, sectorOrigin, siteHref } from '@/lib/site'
 
 type Params = { slug: string; commodity: string }
 
 const SECTOR = 'agricultural-commodities'
+const agro = getSector(SECTOR)!
 
 export const dynamicParams = false
 
@@ -27,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   return {
     title: `${product.name} Export`,
     description: `${product.tagline}. How Talcora sources, processes, grades and ships ${product.name.toLowerCase()} from West Africa.`,
-    alternates: { canonical: `/sectors/${SECTOR}/${product.id}` },
+    alternates: { canonical: `${sectorOrigin(agro)}/${product.id}` },
   }
 }
 
@@ -47,8 +49,8 @@ export default async function CommodityPage({ params }: { params: Promise<Params
         lead={`${product.tagline}. Follow each stage of how we source, process, grade and ship ${product.name.toLowerCase()} to buyers worldwide.`}
         image="/img/cocoa-farm.jpg"
         crumbs={[
-          { label: 'What We Trade', href: '/sectors' },
-          { label: 'Agricultural Commodities', href: `/sectors/${SECTOR}` },
+          { label: 'What We Trade', href: siteHref('/sectors') },
+          { label: 'Agricultural Commodities', href: sectorHref(agro) },
           { label: product.name },
         ]}
       >
@@ -88,7 +90,7 @@ export default async function CommodityPage({ params }: { params: Promise<Params
           ))}
 
           <div style={{ marginTop: 24 }}>
-            <Link href={`/sectors/${SECTOR}`} className="link-arrow">
+            <Link href={sectorHref(agro)} className="link-arrow">
               Back to agricultural commodities <Icon name="arrow" size={16} strokeWidth={2} />
             </Link>
           </div>

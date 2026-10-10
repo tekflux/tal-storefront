@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Logo from './Logo'
 import Icon from './Icon'
-import { navigation } from '@/lib/site'
+import { navigation, siteHref } from '@/lib/site'
 
 export default function Header() {
   const pathname = usePathname()
@@ -53,7 +53,7 @@ export default function Header() {
                 onMouseLeave={() => setMenuDismissed(false)}
               >
                 <Link
-                  href={item.href}
+                  href={siteHref(item.href)}
                   onClick={dismissMenu}
                   className="site-nav__link"
                   aria-current={isActive(item.href) ? 'page' : undefined}
@@ -69,7 +69,7 @@ export default function Header() {
                     </Link>
                   ))}
                   <div className="site-nav__menu-foot">
-                    <Link href={item.href} className="link-arrow" style={{ padding: 0 }} onClick={dismissMenu}>
+                    <Link href={siteHref(item.href)} className="link-arrow" style={{ padding: 0 }} onClick={dismissMenu}>
                       View all sectors <Icon name="arrow" size={16} strokeWidth={2} />
                     </Link>
                   </div>
@@ -78,7 +78,7 @@ export default function Header() {
             ) : (
               <Link
                 key={item.href}
-                href={item.href}
+                href={siteHref(item.href)}
                 className="site-nav__link"
                 aria-current={isActive(item.href) ? 'page' : undefined}
               >
@@ -89,7 +89,7 @@ export default function Header() {
         </nav>
 
         <div className="site-header__actions">
-          <Link href="/contact" className="btn btn--primary btn--sm">
+          <Link href={siteHref('/contact')} className="btn btn--primary btn--sm">
             Request a quote
           </Link>
           <button className="menu-toggle" onClick={() => setOpen(true)} aria-label="Open menu" aria-expanded={open}>
@@ -108,11 +108,11 @@ export default function Header() {
           </div>
           <ul className="mobile-nav__list">
             <li>
-              <Link href="/">Home</Link>
+              <Link href={siteHref('/')}>Home</Link>
             </li>
             {navigation.map(item => (
               <li key={item.href}>
-                <Link href={item.href}>{item.label}</Link>
+                <Link href={siteHref(item.href)}>{item.label}</Link>
                 {item.children && (
                   <ul className="mobile-nav__sub">
                     {item.children.map(child => (
@@ -125,7 +125,7 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <Link href="/contact" className="btn btn--primary" style={{ marginTop: 'auto' }}>
+          <Link href={siteHref('/contact')} className="btn btn--primary" style={{ marginTop: 'auto' }}>
             Request a quote <Icon name="arrow" size={18} strokeWidth={2} />
           </Link>
         </div>

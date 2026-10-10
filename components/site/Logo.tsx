@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { siteHref } from '@/lib/site'
 
 export function LogoMark({ size = 40 }: { size?: number }) {
   return (
@@ -13,7 +14,7 @@ export function LogoMark({ size = 40 }: { size?: number }) {
   )
 }
 
-export default function Logo({ href = '/' }: { href?: string }) {
+export default function Logo({ href = siteHref('/') }: { href?: string }) {
   return (
     <Link href={href} className="logo" aria-label="Talcora home">
       <LogoMark />

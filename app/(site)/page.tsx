@@ -5,7 +5,9 @@ import CountUp from '@/components/site/CountUp'
 import CtaBand from '@/components/site/CtaBand'
 import InsightCard from '@/components/site/InsightCard'
 import { insights } from '@/lib/insights'
-import { commodities, credentials, process, regions, sectors, services, stats, values } from '@/lib/site'
+import { commodities, credentials, getSector, process, regions, sectorHref, sectors, services, stats, values } from '@/lib/site'
+
+const agro = getSector('agricultural-commodities')!
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -21,7 +23,7 @@ export default function HomePage() {
         </div>
         <div className="wrap">
           <div className="hero__content">
-            <p className="eyebrow">International import &amp; export</p>
+            <p className="eyebrow">Agro export · Energy · Construction · Industrial supply</p>
             <h1 className="display">
               Trusted trade between Africa <em>and the world.</em>
             </h1>
@@ -133,7 +135,7 @@ export default function HomePage() {
           <div className="sector-grid">
             {sectors.map((s, i) => (
               <Link
-                href={`/sectors/${s.slug}`}
+                href={sectorHref(s)}
                 className="sector-card reveal"
                 key={s.slug}
                 style={{ ['--delay' as string]: `${(i % 3) * 0.08}s` }}
@@ -230,7 +232,7 @@ export default function HomePage() {
               <p className="lead" style={{ marginBottom: 24 }}>
                 Cleaned, dried, graded and independently inspected at origin, then packed for the long haul.
               </p>
-              <Link href="/sectors/agricultural-commodities" className="link-arrow">
+              <Link href={sectorHref(agro)} className="link-arrow">
                 Full commodity list <Icon name="arrow" size={16} strokeWidth={2} />
               </Link>
             </div>
@@ -238,7 +240,7 @@ export default function HomePage() {
           <div className="commodity-grid">
             {commodities.map((c, i) => (
               <Link
-                href={c.href ?? '/sectors/agricultural-commodities'}
+                href={sectorHref(agro, c.page)}
                 className="commodity reveal"
                 key={c.id}
                 style={{ ['--delay' as string]: `${i * 0.06}s` }}

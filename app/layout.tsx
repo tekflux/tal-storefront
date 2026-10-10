@@ -23,7 +23,7 @@ export const viewport: Viewport = {
   themeColor: '#0a1b2b',
 }
 
-const title = 'Talcora | International Import & Export Company'
+const title = 'Talcora | Agro Export, Energy, Construction & Industrial Supply'
 const description = company.description
 
 export const metadata: Metadata = {
@@ -35,18 +35,13 @@ export const metadata: Metadata = {
   description,
   keywords: [
     'Talcora',
-    'import export company',
-    'international trade company',
-    'export company Nigeria',
-    'import procurement services',
-    'agricultural commodities export',
-    'cocoa export',
-    'cashew export',
-    'sesame export',
-    'ginger export',
-    'freight and logistics',
-    'trade documentation',
-    'global sourcing',
+    'agro commodity exporter Nigeria',
+    'cocoa cashew sesame exporter',
+    'solar equipment supplier',
+    'construction procurement',
+    'building materials supplier',
+    'machinery supplier',
+    'African food wholesale',
   ],
   authors: [{ name: company.legalName }],
   icons: {
@@ -62,7 +57,7 @@ export const metadata: Metadata = {
     url: company.url,
     siteName: company.name,
     type: 'website',
-    images: [{ url: '/img/og.jpg', width: 1200, height: 630, alt: 'Talcora — international import and export' }],
+    images: [{ url: '/img/og.jpg', width: 1200, height: 630, alt: 'Talcora — agro export, energy, construction and industrial supply' }],
   },
   twitter: {
     card: 'summary_large_image',

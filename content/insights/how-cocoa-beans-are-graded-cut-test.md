@@ -55,6 +55,6 @@ Lots that pass are bagged in jute, typically around 62.5 to 64 kg per bag, marke
 
 ## How Talcora grades cocoa
 
-Our field team runs cut tests and moisture checks on every lot at origin, and every shipment is independently inspected before it leaves the port. You can see the full process, from harvesting to shipping, on our [cocoa page](/sectors/agricultural-commodities/cocoa).
+Our field team runs cut tests and moisture checks on every lot at origin, and every shipment is independently inspected before it leaves the port. You can see the full process, from harvesting to shipping, on our [cocoa page](https://agro.talcoraexim.com/cocoa).
 
 Looking for Grade 1 cocoa? [Request a quotation](/contact) with your volume, destination and preferred Incoterm.

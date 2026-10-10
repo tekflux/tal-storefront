@@ -1,7 +1,7 @@
 {
   "name": "talcora",
   "version": "1.0.0",
-  "description": "Talcora - International Import & Export Website",
+  "description": "Talcora - corporate website and sector subdomains",
   "scripts": {
     "build": "next build",
     "dev": "next dev",

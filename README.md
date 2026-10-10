@@ -1,7 +1,25 @@
 # Talcora — Website
 
-Marketing site for **Talcora** (talcoraexim.com), an international import & export company.
+Corporate site for **Talcora** (talcoraexim.com), with each sector on its own subdomain.
 Next.js 15 (App Router), deployed to Cloudflare via OpenNext.
+
+## Subdomains
+
+One app serves every host. `middleware.ts` routes each sector subdomain to its page:
+
+| Address | Page |
+| --- | --- |
+| talcoraexim.com, www.talcoraexim.com | Corporate site |
+| agro.talcoraexim.com (and /cocoa) | Agricultural Commodities |
+| foods.talcoraexim.com | Food & Consumer Goods |
+| materials.talcoraexim.com | Industrial & Building Materials |
+| machinery.talcoraexim.com | Machinery & Equipment |
+| energy.talcoraexim.com | Energy & Power Solutions |
+| construction.talcoraexim.com | Construction & Infrastructure |
+
+Old `/sectors/<slug>` addresses redirect (301) to the subdomain. A sector's subdomain, Google title,
+description and keywords are set in `lib/site.ts`. Each subdomain must also be added as a custom domain
+on the Cloudflare project. In `npm run dev` sectors stay on localhost under `/sectors/<slug>`.
 
 ## Develop
 

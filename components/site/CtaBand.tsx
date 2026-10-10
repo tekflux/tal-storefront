@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Icon from './Icon'
-import { company } from '@/lib/site'
+import { company, siteHref } from '@/lib/site'
 
 export default function CtaBand({
   title = (
@@ -28,7 +28,7 @@ export default function CtaBand({
             </p>
           </div>
           <div className="cta-band__actions">
-            <Link href="/contact" className="btn btn--primary">
+            <Link href={siteHref('/contact')} className="btn btn--primary">
               Request a quote <Icon name="arrow" size={18} strokeWidth={2} />
             </Link>
             <div className="cta-band__contact">
