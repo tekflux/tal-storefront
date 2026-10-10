@@ -124,10 +124,6 @@ export default function HomePage() {
             <div className="collage__inset">
               <img src="/img/meeting.jpg" alt="Talcora trade team meeting with partners" loading="lazy" />
             </div>
-            <div className="collage__badge">
-              <strong>2</strong>
-              <span>offices: London &amp; Kano, at origin and in market</span>
-            </div>
           </div>
         </div>
       </section>
