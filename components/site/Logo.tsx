@@ -14,11 +14,15 @@ export function LogoMark({ size = 40 }: { size?: number }) {
   )
 }
 
+// Sector names ("Talcora Energy") render as a lockup: the Talcora wordmark, a divider and the
+// division in small caps, so every division shares the parent brand mark.
 export default function Logo({ href = siteHref('/'), name = 'Talcora' }: { href?: string; name?: string }) {
+  const division = name.replace(/^Talcora\s*/, '')
   return (
     <Link href={href} className="logo" aria-label={`${name} home`}>
       <LogoMark />
-      <span className="logo__name">{name}</span>
+      <span className="logo__name">Talcora</span>
+      {division && <span className="logo__division">{division}</span>}
     </Link>
   )
 }

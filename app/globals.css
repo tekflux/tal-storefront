@@ -2568,10 +2568,35 @@ section[id] {
   max-width: 100%;
 }
 
-/* Keep longer brand names such as "Talcora Construction" on one line in the phone header. */
+/* Division lockup: Talcora | ENERGY */
+.logo__division {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brass);
+  white-space: nowrap;
+}
+
+.logo__division::before {
+  content: '';
+  width: 1px;
+  height: 22px;
+  background: currentColor;
+  opacity: 0.45;
+}
+
 @media (max-width: 560px) {
-  .site-header .logo__name {
-    font-size: 21px;
-    white-space: nowrap;
+  .site-header .logo {
+    gap: 10px;
+  }
+  .site-header .logo__division {
+    gap: 10px;
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
   }
 }
