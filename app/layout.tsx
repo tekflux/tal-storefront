@@ -23,8 +23,10 @@ export const viewport: Viewport = {
   themeColor: '#0a1b2b',
 }
 
-const title = 'Talcora | Agro Export, Energy, Construction & Industrial Supply'
-const description = company.description
+// Kept under ~60 and ~155 characters so Google shows them in full.
+const title = 'Talcora | Agro Export, Energy & Industrial Supply'
+const description =
+  'Talcora exports West African agricultural commodities and supplies energy, construction, machinery and food products to businesses worldwide.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(company.url),

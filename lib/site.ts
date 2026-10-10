@@ -129,9 +129,9 @@ export const sectors: Sector[] = [
       },
     ],
     name: 'Agricultural Commodities',
-    seoTitle: 'Cocoa, Cashew, Sesame & Ginger Exporter from Nigeria | Talcora Agro',
+    seoTitle: 'Cocoa, Cashew & Sesame Exporter from Nigeria | Talcora Agro',
     seoDescription:
-      'Export-grade cocoa beans, cashew nuts, sesame seeds, dried ginger, hibiscus, soybeans and shea from Nigeria and West Africa. Inspected at origin, shipped FOB, CFR or CIF.',
+      'Export-grade cocoa, cashew, sesame, ginger, hibiscus, soybeans and shea from Nigeria. Inspected at origin and shipped FOB, CFR or CIF.',
     keywords: [
       'cocoa beans exporter Nigeria',
       'cashew nut supplier',
@@ -199,9 +199,9 @@ export const sectors: Sector[] = [
       },
     ],
     name: 'Food & Consumer Goods',
-    seoTitle: 'African Food Products & Staple Foods Wholesale Supplier | Talcora Foods',
+    seoTitle: 'African Food & Staples Wholesale Supplier | Talcora Foods',
     seoDescription:
-      'Wholesale African food products, staple foods and FMCG for retailers, distributors and online grocers in the UK, Europe and West Africa. Vetted suppliers, compliant labelling.',
+      'Wholesale African foods, staples and FMCG for retailers, distributors and online grocers in the UK, Europe and West Africa, from vetted suppliers.',
     keywords: [
       'African food wholesale supplier UK',
       'African food products distributor',
@@ -261,9 +261,9 @@ export const sectors: Sector[] = [
       },
     ],
     name: 'General Supply',
-    seoTitle: 'General Supply & Procurement Company, UK and Nigeria | Talcora Supply',
+    seoTitle: 'General Supply & Procurement, UK & Nigeria | Talcora Supply',
     seoDescription:
-      'One supplier for the goods your business runs on: industrial consumables, packaging, office and IT equipment, vehicle parts and hardware, sourced from vetted manufacturers and delivered.',
+      'One supplier for industrial consumables, packaging, office and IT equipment, vehicle parts and hardware, sourced from vetted manufacturers.',
     keywords: [
       'general supply company',
       'general contractor supplies Nigeria',
@@ -326,9 +326,9 @@ export const sectors: Sector[] = [
       },
     ],
     name: 'Machinery & Equipment',
-    seoTitle: 'Agro-Processing Machinery, Generators & Forklifts Supplier | Talcora',
+    seoTitle: 'Agro-Processing Machinery & Generators | Talcora Machinery',
     seoDescription:
-      'Agro-processing lines, construction plant, forklifts, generators and spare parts sourced from vetted manufacturers, with factory inspection, freight and after-sales support.',
+      'Agro-processing lines, construction plant, forklifts, generators and spares from vetted manufacturers, with inspection, freight and after-sales support.',
     keywords: [
       'agro processing machinery supplier',
       'generator supplier Nigeria',
@@ -389,9 +389,9 @@ export const sectors: Sector[] = [
       },
     ],
     name: 'Energy & Power Solutions',
-    seoTitle: 'Solar Panels, Inverters & Lithium Batteries Supplier | Talcora Energy',
+    seoTitle: 'Solar Panels, Inverters & Batteries | Talcora Energy',
     seoDescription:
-      'Tier-one solar panels, hybrid inverters, lithium batteries, transformers and cables for installers, developers and businesses. Certified equipment, shipped to site.',
+      'Tier-one solar panels, hybrid inverters, lithium batteries, transformers and cables for installers, developers and businesses, shipped to site.',
     keywords: [
       'solar panel supplier Nigeria',
       'solar inverter supplier',
@@ -451,9 +451,9 @@ export const sectors: Sector[] = [
       },
     ],
     name: 'Construction & Infrastructure',
-    seoTitle: 'Construction Project Procurement & Site Supply | Talcora Construction',
+    seoTitle: 'Construction Project Procurement | Talcora Construction',
     seoDescription:
-      'Procurement and delivery for construction and infrastructure projects: prefabricated buildings, formwork, scaffolding, civil works materials and MEP packages, phased to your programme.',
+      'Procurement for construction projects: prefabricated buildings, formwork, scaffolding, civil materials and MEP packages, phased to your programme.',
     keywords: [
       'construction procurement company',
       'construction materials supplier Nigeria',
