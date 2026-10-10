@@ -5,7 +5,7 @@ import CountUp from '@/components/site/CountUp'
 import CtaBand from '@/components/site/CtaBand'
 import InsightCard from '@/components/site/InsightCard'
 import { insights } from '@/lib/insights'
-import { credentials, process, regions, sectorHref, sectors, services, stats, values } from '@/lib/site'
+import { credentials, process, regions, sectorHref, sectors, stats, values } from '@/lib/site'
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -153,7 +153,7 @@ export default function HomePage() {
       {/* ---------- Services ---------- */}
       <section className="section section--ink">
         <div className="wrap">
-          <div className="section-head reveal">
+          <div className="section-head reveal" style={{ marginBottom: 0 }}>
             <div>
               <p className="eyebrow">Our services</p>
               <h2 className="h2">
@@ -169,22 +169,6 @@ export default function HomePage() {
                 View all services <Icon name="arrow" size={16} strokeWidth={2} />
               </Link>
             </div>
-          </div>
-          <div className="service-grid reveal">
-            {services.map(s => (
-              <article className="service" key={s.id}>
-                <span className="service__icon">
-                  <Icon name={s.icon} size={24} />
-                </span>
-                <h3 className="service__title">{s.title}</h3>
-                <p className="service__text">{s.description}</p>
-                <ul className="service__points">
-                  {s.points.map(p => (
-                    <li key={p}>{p}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
           </div>
         </div>
       </section>
