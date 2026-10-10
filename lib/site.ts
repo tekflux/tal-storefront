@@ -600,33 +600,23 @@ export const process = [
 export const regions = [
   {
     name: 'West Africa',
-    role: 'Origin & operations hub',
     image: '/img/region-westafrica.jpg',
-    places: ['Nigeria', 'Ghana', "Côte d'Ivoire", 'Benin'],
   },
   {
     name: 'Europe',
-    role: 'Headquarters & key buyers',
     image: '/img/region-europe.jpg',
-    places: ['United Kingdom', 'Netherlands', 'Germany', 'Belgium'],
   },
   {
     name: 'Middle East',
-    role: 'Trade hubs & re-export',
     image: '/img/region-middleeast.jpg',
-    places: ['UAE', 'Saudi Arabia', 'Turkey', 'Qatar'],
   },
   {
     name: 'Asia',
-    role: 'Processing & manufacturing',
     image: '/img/region-asia.jpg',
-    places: ['China', 'India', 'Vietnam', 'Singapore'],
   },
   {
     name: 'North America',
-    role: 'Growing specialty demand',
     image: '/img/region-northamerica.jpg',
-    places: ['United States', 'Canada'],
   },
 ]
 

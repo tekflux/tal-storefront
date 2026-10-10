@@ -217,13 +217,7 @@ export default function HomePage() {
             {regions.map((r, i) => (
               <div className="region reveal" key={r.name} style={{ ['--delay' as string]: `${i * 0.06}s` }}>
                 <img src={r.image} alt="" loading="lazy" />
-                <span className="region__role">{r.role}</span>
                 <h3 className="region__name">{r.name}</h3>
-                <p className="region__places">
-                  {r.places.map(place => (
-                    <span key={place}>{place}</span>
-                  ))}
-                </p>
               </div>
             ))}
           </div>
