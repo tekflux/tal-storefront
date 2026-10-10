@@ -19,7 +19,7 @@ export function LogoMark({ size = 40 }: { size?: number }) {
 export default function Logo({ href = siteHref('/'), name = 'Talcora' }: { href?: string; name?: string }) {
   const division = name.replace(/^Talcora\s*/, '')
   return (
-    <Link href={href} className="logo" aria-label={`${name} home`}>
+    <Link href={href} className={division ? 'logo logo--division' : 'logo'} aria-label={`${name} home`}>
       <LogoMark />
       <span className="logo__name">Talcora</span>
       {division && <span className="logo__division">{division}</span>}
