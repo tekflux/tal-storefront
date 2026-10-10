@@ -1804,6 +1804,21 @@ a {
   aspect-ratio: 16 / 10;
 }
 
+/* With only two photos, the second also spans the full width */
+.process-block__media img:nth-child(2):last-of-type {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 10;
+}
+
+/* Stages without photos: text runs in a single, readable column */
+.process-block--text {
+  grid-template-columns: minmax(0, 760px);
+}
+
+.process-block--text > :first-child {
+  order: 0;
+}
+
 .process-block__media figcaption {
   grid-column: 1 / -1;
   font-size: 13px;

@@ -34,10 +34,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   }
 }
 
-// Commodity names in the sector list that have their own detail page.
-const detailPages: Record<string, string> = Object.fromEntries(
-  PRODUCTS.map(p => [p.name.toLowerCase(), p.id])
-)
+// Commodity names in the sector list that have their own detail page ("Cashew nuts" -> 'cashew').
+const detailPage = (name: string) => PRODUCTS.find(p => name.toLowerCase().startsWith(p.id))?.id
 
 function ProductCard({ item, href, delay }: { item: FeaturedProduct; href?: string; delay: number }) {
   const body = (
@@ -223,9 +221,7 @@ export default async function SectorPage({ params }: { params: Promise<Params> }
                     <div className="product-row__name">{p.name}</div>
                     <div className="product-row__detail">
                       {p.detail}
-                      {detailPages[p.name.toLowerCase()] && (
-                        <Link href={sectorHref(sector, detailPages[p.name.toLowerCase()])}>View process →</Link>
-                      )}
+                      {detailPage(p.name) && <Link href={sectorHref(sector, detailPage(p.name))}>View process →</Link>}
                     </div>
                   </div>
                 ))}

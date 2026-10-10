@@ -53,14 +53,14 @@ export const credentials = [
 
 export type FeaturedProduct = { id: string; name: string; spec: string; image: string; page?: string }
 
-// Shown as the "Featured exports" grid on agro.talcoraexim.com. `page` is the commodity's own page there, where one exists.
+// Shown as the "Featured exports" grid on agro.talcoraexim.com. `page` is the commodity's own process page there.
 const agroFeatured: FeaturedProduct[] = [
   { id: 'cocoa', name: 'Cocoa Beans', spec: 'Moisture ≤7% · Fat 55–58%', image: '/img/commodity-cocoa.jpg', page: 'cocoa' },
-  { id: 'cashew', name: 'Cashew Nuts', spec: 'RCN · W180 / W240 / W320', image: '/img/commodity-cashew.jpg' },
-  { id: 'sesame', name: 'Sesame Seeds', spec: 'Purity 99.95% · Oil 50–55%', image: '/img/commodity-sesame.jpg' },
-  { id: 'ginger', name: 'Dried Ginger', spec: 'Gingerol 1.8–2.5% · Moisture ≤12%', image: '/img/commodity-ginger.jpg' },
-  { id: 'hibiscus', name: 'Hibiscus Flower', spec: 'Dried calyces · Hand-sorted', image: '/img/commodity-hibiscus.jpg' },
-  { id: 'soybeans', name: 'Soybeans', spec: 'Non-GMO · Protein 38–42%', image: '/img/commodity-soybeans.jpg' },
+  { id: 'cashew', name: 'Cashew Nuts', spec: 'RCN · W180 / W240 / W320', image: '/img/commodity-cashew.jpg', page: 'cashew' },
+  { id: 'sesame', name: 'Sesame Seeds', spec: 'Purity 99.95% · Oil 50–55%', image: '/img/commodity-sesame.jpg', page: 'sesame' },
+  { id: 'ginger', name: 'Dried Ginger', spec: 'Gingerol 1.8–2.5% · Moisture ≤12%', image: '/img/commodity-ginger.jpg', page: 'ginger' },
+  { id: 'hibiscus', name: 'Hibiscus Flower', spec: 'Dried calyces · Hand-sorted', image: '/img/commodity-hibiscus.jpg', page: 'hibiscus' },
+  { id: 'soybeans', name: 'Soybeans', spec: 'Non-GMO · Protein 38–42%', image: '/img/commodity-soybeans.jpg', page: 'soybeans' },
 ]
 
 export type TradeDirection = 'Export' | 'Import' | 'Import & Export'

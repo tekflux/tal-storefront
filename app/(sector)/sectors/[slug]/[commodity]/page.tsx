@@ -47,7 +47,7 @@ export default async function CommodityPage({ params }: { params: Promise<Params
           </>
         }
         lead={`${product.tagline}. Follow each stage of how we source, process, grade and ship ${product.name.toLowerCase()} to buyers worldwide.`}
-        image="/img/cocoa-farm.jpg"
+        image={product.heroImage}
         home={{ label: agro.brand, href: sectorHref(agro) }}
         crumbs={[{ label: product.name }]}
       >
@@ -63,7 +63,7 @@ export default async function CommodityPage({ params }: { params: Promise<Params
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap">
           {product.process.map((stage, i) => (
-            <article className="process-block" key={stage.step}>
+            <article className={`process-block${stage.images.length ? '' : ' process-block--text'}`} key={stage.step}>
               <div className="reveal">
                 <p className="eyebrow">
                   Stage 0{i + 1} · {stage.step}
@@ -77,12 +77,14 @@ export default async function CommodityPage({ params }: { params: Promise<Params
                   ))}
                 </div>
               </div>
-              <figure className="process-block__media reveal" style={{ margin: 0, ['--delay' as string]: '0.1s' }}>
-                {stage.images.slice(0, 3).map((src, j) => (
-                  <img key={src} src={src} alt={j === 0 ? stage.imageCaption : ''} loading="lazy" />
-                ))}
-                <figcaption>{stage.imageCaption}</figcaption>
-              </figure>
+              {stage.images.length > 0 && (
+                <figure className="process-block__media reveal" style={{ margin: 0, ['--delay' as string]: '0.1s' }}>
+                  {stage.images.slice(0, 3).map((src, j) => (
+                    <img key={src} src={src} alt={j === 0 ? stage.imageCaption : ''} loading="lazy" />
+                  ))}
+                  <figcaption>{stage.imageCaption}</figcaption>
+                </figure>
+              )}
             </article>
           ))}
 
