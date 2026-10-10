@@ -27,11 +27,12 @@ export async function POST(req: Request) {
     }
 
     const resendApiKey = process.env.RESEND_API_KEY
-    const toEmail = process.env.CONTACT_TO_EMAIL
-    // A sender label only: Resend can send from any address on the verified domain, no mailbox needed
+    // Defaults, so only RESEND_API_KEY has to be set (as a Secret in the Cloudflare dashboard).
+    // The sender is a label only: Resend can send from any address on the verified domain.
+    const toEmail = process.env.CONTACT_TO_EMAIL || 'info@talcoraexim.com'
     const fromEmail = process.env.CONTACT_FROM_EMAIL || 'noreply@talcoraexim.com'
 
-    if (!resendApiKey || !toEmail) {
+    if (!resendApiKey) {
       return NextResponse.json(
         { message: 'Server email configuration is missing.' },
         { status: 500 }

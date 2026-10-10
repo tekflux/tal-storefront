@@ -5,9 +5,5 @@
   "compatibility_date": "2026-04-14",
   "compatibility_flags": [
     "nodejs_compat"
-  ],
-  // Plain settings for the contact form. RESEND_API_KEY is a Secret set in the Cloudflare dashboard.
-  "vars": {
-    "CONTACT_TO_EMAIL": "info@talcoraexim.com"
-  }
+  ]
 }
